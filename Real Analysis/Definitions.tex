@@ -1,0 +1,507 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\DeclareMathOperator\dom{dom}
+\DeclareMathOperator\eps{\epsilon}
+\DeclareMathOperator\del{\delta}
+\DeclareMathOperator\Del{\Delta}
+\DeclareMathOperator\R{\mathbb{R}}
+\DeclareMathOperator\N{\mathbb{N}}
+\DeclareMathOperator\ran{ran}
+
+\DeclareMathOperator\inti{\int_{a}^{b}}
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+\title{Definitions}
+
+
+\begin{document}
+\maketitle
+\newpage{}
+
+\section*{Chapter 1}
+\subsection{Definition 2*}
+Peano axioms:
+\begin{enumerate}
+\item the number 1 exists
+\item if a exists, then s(a) exists
+\item if s(a) = s(b) then a=b
+\item $s(a) \neq 1$ for all natural a
+\item if T is a subset of N then if (1 is in T and for all x in T,
+s(x) is in T) then T = N.
+\end{enumerate}
+\subsection{Definition 4*}
+Total order axioms: \\
+\newline
+Let S be a set. A relation $\leq$ on S is called a total order if it satisfies
+\begin{enumerate}
+\item (TO1) For all s, $t \in S$ either s $\leq$ t or t $\leq$ s (or both);
+\item (TO2) If s $\leq$ t and t $\leq$ s then s = t; and
+\item (TO3) If r $\leq$ s and s $\leq$ t then r $\leq$ t.
+\end{enumerate}
+More succinctly,
+\begin{enumerate}
+\item (TO1) Given two numbers, one must be greater than or equal to the other
+\item (TO2) squeeze inequality holds
+\item (TO3) common sense inequality holds
+\end{enumerate}
+\subsection{Definition 5}
+Boundedness (of subsets of sets with total order). \\
+\newline
+Let S be a set with total order $\leq$ (think N, Z, or Q) and suppose that
+T $\subseteq$ S. We say that T is:
+\begin{enumerate}
+\item Bounded above in S if there exists s $\in$ S such that t $\leq$ s for all t $\in$ T. In this
+case such an s is said to be an upper bound for T.
+\item Bounded below in S if there exists s $\in$ S such that s $\leq$ t for all t $\in$ T. In this
+case such an s is said to be an lower bound for T.
+\item Bounded in S if T is bounded above and bounded below.
+\end{enumerate}
+
+
+\subsection{Definition 7}
+Supremum and infimum. \\
+\newline
+Suppose that S is a set with total order $\leq$ and T $\subseteq$ S.
+\begin{enumerate}
+\item A least upper bound for T is an upper bound in S which is less than every
+other upper bound. More precisely, $s_0$ is a least upper bound for T if whenever s
+is an upper bound for T we have $s$ $\geq$ $s_0$ .
+If $s_0$ actually belongs to T we say that
+it’s a maximum or greatest element of T .
+\item A greatest lower bound for T is a lower bound in S which is greater than every
+other lower bound. More precisely, $s_0$ is a least upper bound for T if whenever s
+is a lower bound for T we have $s_0$ $\geq$ $s$. If $s_0$ actually belongs to T we say that
+it’s a minimum or least element of T .
+\end{enumerate}
+\subsubsection{infimum of $\frac{n+1}{n}$ = 1}
+One is a lower bound obviously. So by Lemma 12 in the notes inf exists.
+Suppose there is some lower bound $B$ greater than 1. Then by the archimedean
+property, $\exists N \in \mathbb{N}$ such that $N>\frac{1}{B-1} \implies B > \frac{N+1}{N}$
+which is a contradiction.
+\subsection{Definition 13}
+-Removed-
+
+\subsection{Definition 22*}
+The distance between two real numbers $x$ and $y$ is the number
+d$(x, y)$ = $|x - y|$.
+
+\subsection{Hidden Definition 1*}
+There exists a set $\mathbb{R}$, called the real numbers with a total
+order $\leq$ such that:
+\begin{enumerate}
+\item $\mathbb{Q}$ $\subset$ $\mathbb{R}$;
+\item the total order $\leq$ on $\mathbb{R}$
+restricts to the usual total order on $\mathbb{Q}$;
+\item $\mathbb{R}$ has the supremum property:
+every nonempty subset of $\mathbb{R}$ which is bounded
+above has a least upper bound in $\mathbb{R}$; and
+\item for all $x$ $\in$ $\mathbb{R}$ the set $\{ q \in \mathbb{Q} : q \leq x \}$ is bounded above, with least upper bound
+equal to $x$.
+\end{enumerate}
+This set $\mathbb{R}$ carries arithmetic operations which extend those on $\mathbb{Q}$.
+\newpage{}
+\section*{Chapter 2}
+\subsection{Definition 24}
+A sequence of real numbers is a function $a : \mathbb{N} \rightarrow \mathbb{R}$. It is a standard
+notational convention, when dealing with sequences, to write $a_n$ for the value $a(n)$ $\in$ $\mathbb{R}$
+taken by the function a at $n$ $\in$ $\mathbb{N}$.
+
+
+\subsection{Definition 25*}
+Let a = $(a_n)^{\infty}_{n=1}$ be a sequence of real numbers. We say that the sequence
+a converges if: \\
+\newline
+There is an L $\in \mathbb{R}$ with the property that for every $\epsilon$ $>$ 0 there exists
+N $\in$ $\mathbb{N}$ such that for all n $\geq$ N , we have $|a_n - L|$ $<$ $\epsilon$.
+If such an L exists we call it a limit of the sequence $(a_n)^{\infty}_{n=1}$ and say that the sequence
+converges to L.
+\subsubsection{We claim $a_n = \frac{3n^3-2n^2+16}{14n^3} \rightarrow \frac{3}{14}$.}
+\begin{proof}
+Fix $\epsilon>0$. By the archimedean property, there exists $N \in \mathbb{N}$ such that $N_1>\frac{1}{\epsilon} \implies \frac{1}{N_1}<\epsilon$. Choose $N=\max \{N_1, 3 \}$. We have:
+\begin{align*}
+\left |  a_n-\frac{3}{14} \right | &= \left | \frac{3n^3-2n^2+16}{14n^3}-\frac{3}{14} \right | \\
+&= \left | \frac{-2n^2+16}{14n^3} \right | \\
+&= \frac{|-2n^2+16|}{14n^3} \\
+&= \frac{2n^2-16}{14n^3} \text{ Since $n \geq 3$ and $|x|=-x$ for $x \leq 0$} \\
+&\leq \frac{2n^2}{2n^3} = \frac{1}{n} \\
+&< \epsilon \quad \text{ Since $N \geq N_1$}
+\end{align*}
+\end{proof}
+\subsubsection{We claim $a_n = \frac{3n^3-n}{14n^3} \not \rightarrow \frac{4}{14}$.}
+\begin{proof}
+Fix $N\in\mathbb{N}$. We claim $\exists n \geq N$ such that $|a_n-\frac{4}{14}|\geq\frac{1}{14}$. We have:
+\begin{align*}
+\left |  a_N-\frac{4}{14} \right | &= \left | \frac{3N^3-N}{14N^3}-\frac{4}{14} \right | \\
+&= \left | \frac{-N^3-N}{14N^3} \right | \\
+&= \frac{N+N^3}{14N^3} \\
+&\geq \frac{1}{14}. \\
+\end{align*}
+\end{proof}
+\subsection{Definition 27*}
+A sequence $a = (a_n)^{\infty}_{n=1}$ is said to diverge if it does not converge to any
+L. That is, for all L $\in$ $\mathbb{R}$ there exists an $\epsilon_0$ $>$ 0 such that for all N $\in$ $\mathbb{N}$ there is n $\geq$ N with
+$|a_n - L|$ $\geq$ $\epsilon_0$ .
+\subsubsection{The sequence $a_n = (-1)^n n$ diverges}
+\begin{proof}
+Fix $L \in \mathbb{R}, N_1 \in \mathbb{N}$. By the archimedean property, there exists a natural number
+$N > \max \{ N_1, |L|+1 \}$.
+ We have $N \geq N_1$ and
+\begin{align*}
+\left |  a_N-L \right | &= \left |N(-1)^N-L \right | \\
+&\geq \left |N \right | - \left | L \right |\\
+&\geq 1.
+\end{align*}
+\end{proof}
+\subsubsection{The sequence $a_n = (-1)^n$ diverges}
+\begin{proof}
+Fix $L \in \mathbb{R}$ and suppose for contradiction that $a_n \to L$. Then
+ $\exists N \in \mathbb{N}$ such that $\forall n \geq N$ we have $|a_n-L|<1$. So
+\begin{align*}
+\left |  a_{2N}-L \right |<1 &\implies \left |(-1)^{2N}-L \right |<1 \\
+&\implies \left |1-L \right | <1\\
+&\implies 1-L<1 \\
+&\implies 0<L \\
+&\text{and} \\
+\left |  a_{2N+1}-L \right |<1 &\implies \left |(-1)^{2N+1}-L \right |<1 \\
+&\implies \left |-1-L \right | <1\\
+&\implies L+1<1 \\
+&\implies L<0. \\
+\end{align*}
+So we have a contradiction. Since $L$ was fixed, $a_n \not \to L \quad \forall L \in \mathbb{R}$.
+\end{proof}
+\subsubsection{The sequence $a_n = (1-\frac{1}{n})(-1)^n$ diverges}
+\begin{proof}
+We claim that the sequence has two subsequences that do not converge to the same limit, so by the
+contrapositive of proposition 47, the sequence a diverges. Let the first subsequence $(a_{n_k})_{k \in \mathbb{N}}$
+be given by $k \mapsto n_k$, $n_k = 2k$. We claim $a_{n_k} \to 1$ as $n \to \infty$. Fix $\epsilon>0$. We have:
+\begin{align*}
+\left |  a_{n_k}-1 \right | &= \left |(1-\frac{1}{2k})(-1)^{2k}-1 \right | \\
+&= \left |(1-\frac{1}{2k})-1 \right | \\
+&= \frac{1}{2k}
+\end{align*}
+By the archimedean property, $\exists N \in \mathbb{N}$ such that $N>\frac{1}{2\epsilon}
+\implies \epsilon > \frac{1}{2N}$. So for each $k\geq N$, $\epsilon>\frac{1}{2N}\geq\frac{1}{2k}=|a_{n_k}-1|$.
+Since $\epsilon$ was fixed, we have $a_{n_k} \to 1$ as $n \to \infty$. Similarly,
+for $(a_{m_k})_{k \in \mathbb{N}}$ given by $k \mapsto m_k$, $m_k = 2k+1$, we have
+$a_{m_k} \to -1$ as $n \to \infty$, so we have demonstrated that
+there are two subsequences of $a$ converging to a
+different limit, so $a$ does not converge, i.e. $a$ diverges.
+\end{proof}
+\subsubsection{The sequence $a_n = \sin(n)$ diverges}
+\begin{proof}
+Yeah nah.
+\end{proof}
+\subsection{Definition 28*}
+Let a be a sequence of real numbers. We write $a_n$ $ \to  $ $\infty$ and say that
+the sequence a diverges to $\infty$ if for every K $\in$ $\mathbb{R}$ there exists N $\in$ $\mathbb{N}$ such that n $\geq$ N
+implies $a_n$ $>$ K. We say that a diverges to -$\infty$ and write an $ \to  $ -$\infty$
+if for every K $\in$ $\mathbb{R}$
+there exists N $\in$ $\mathbb{N}$ such that n $\geq$ N $\Longrightarrow$ $a_n$ $<$ K.
+\subsubsection{The sequence $a_n = n$ diverges to infinity}
+\begin{proof}
+Fix $M \in \mathbb{R}$. By the archimedean property, there exists a natural number $N>M$
+and hence $\forall n \geq N$, $a_n = n \geq N >M$.
+\end{proof}
+\subsubsection{The sequence $a_n = \log(n)$ diverges to infinity}
+\begin{proof}
+Fix $M \in \mathbb{R}$. By the archimedean property, there exists
+a natural number $N>e^M \implies \log(N)>M$
+and hence $\forall n \geq N$, $a_n = \log(n) \geq \log(N) >M$.
+\end{proof}
+\subsubsection{Lemma 29 - divergent to infinity implies divergent}
+\begin{proof}
+Fix $L \in \mathbb{R}$, $N \in \mathbb{N}$. Since $a_n \to \infty$, $\exists N_1 \in \mathbb{N}$
+such that $\forall n \geq N_1$, $a_n>\max \{ 1, 1+L \}>0$. Choose $n = \max \{N,N_1 \}$.
+Then $n \geq N$ and $n \geq N_1 \implies a_n>1+L \implies |a_n-L| \geq 1$, so $a$ diverges.
+\end{proof}
+\subsection{Definition 33*}
+A sequence $(a_n)^{\infty}_{n=1}$ is bounded if there exists B $\in$ $\mathbb{R}$ such that $|a_n |$ $\leq$ B
+for all n $\in$ $\mathbb{N}$.
+
+\subsection{Definition 37}
+The annoying terminologies.
+\begin{enumerate}
+\item Monotonically increasing: $a_{n+1}>a_n$
+\item nondecreasing: $a_{n+1} \geq a_n$
+\item Monotonically decreasing: $a_{n+1}<a_n$
+\item nonincreasing: $a_{n+1} \leq a_n$
+\end{enumerate}
+$\forall n \in $ $\mathbb{N}$. Note that sum of likewise monotones is likewise
+monotone, sum of opposite monotones can be anything, product of monotones can be anything
+product of increasing positive is increasing.
+
+\subsection{Definition 41*}
+A sequence a is cauchy if: \\
+\newline
+For every $\epsilon>0$, $\exists N \in $ $\mathbb{N}$ such that when
+$m,n \geq N$ we have $|a_m-a_n|<\epsilon$.
+
+\subsection{Definition 46*}
+Let $k \mapsto n_k$ be a Monotonically increasing sequence of natural numbers.
+Then the sequence $(a_{n_k})^{\infty}_{k=1}$ is called a subsequence of a.
+
+\subsection{Definition 49*}
+If $(a_n)$ is a sequence in $\mathbb{R}$, then the series generated by a is he sequence
+$(s_k)$ defined by \begin{align*}
+s_1 \vcentcolon = a_1 \\
+s_2 \vcentcolon = s_1 + a_2 = a_1 +a_2 \\
+\cdots \\
+s_k \vcentcolon= s_{k-1} + a_k
+\end{align*}
+We call $a_n$ the terms of the series and $s_k$ the partial sums of the series.
+\[
+\sum_{n=1}^{\infty} a_n \vcentcolon= \lim_{k \to \infty}s_k.
+\]
+If the limit converges, we call it the sum of the series and if it diverges,
+we say the series diverges.
+\newpage{}
+\section*{Chapter 3}
+\subsection{Definition 53*}
+A function on $\mathbb{R}$ is a function $f: \dom (f) \to $ $\mathbb{R}$, $\dom (f) \subseteq$ $\mathbb{R}$.
+The range of $f$ is given by \[
+\ran(f) = \{ y \in \mathbb{R} : y = f(x), \, x \in \dom(f) \}.
+\]
+
+\subsection{Definition 55}
+The natural domain of a formula specifying a function is the largest subset of $\mathbb{R}$
+on which the formula makes sense.
+
+\subsection{Definition 58*}
+A nonempty set of numbers $I\subseteq\mathbb{R}$ is an interval if whenever
+$x,y \in I$ with $x<y$ then for each a such that $x<a<y$, $a \in I$.
+
+\subsection{Definition 61*}
+A function $f: \dom (f) \to $ $\mathbb{R}$ is defined near a point a $ \in \mathbb{R}$
+if there is $\delta_0$ such that \[
+\{ x:0<|x-a|<\delta_0 \} \subseteq \dom(f).
+\]
+In order for a function to be defined near a, it needs to be defined for all values
+arbitrarily close to a on both sides.
+\subsection{Definition 64*}
+Suppose that $f$ is defined near a. $\{$(The values of $f$ converge to a limit
+$L$) $\Longleftrightarrow$ $(f(x) \to L)$ as $x \to a$ $\}$ $\Longleftrightarrow \{ \lim_{x \to a}f(x) = L \}$ if for each $\epsilon>0$, $\exists \delta > 0$ such that $\forall x$, if \[
+0<|x-a|<\delta \Longrightarrow |f(x)-L| < \epsilon.
+\]
+
+\subsection{Definition 68*}
+A function $f$ is defined near but to the right of a if $\exists \delta_0>0$ such that
+$(a, a+\delta_0) \subseteq \dom(f)$. If $f$ is defined near but to the right of a, then $f$
+converges to $L$ as $x \to a^+$ (from the right) if for each $\epsilon > 0, \exists \delta > 0$ such that \[
+0<x-a<\delta \Longrightarrow |f(x)-L| < \epsilon.
+\]
+Similarly, a function is defined near to the left of a, i.e.
+$\exists \delta_0>0$ such that
+$(a-\delta_0, a) \subseteq \dom(f)$. And if $f$ is defined to the left, then
+$f$ converges to $L$ as $x \to a^-$ (from the left) if for each $\epsilon >0, \exists \delta >0$ such that \[
+0<a-x<\delta \Longrightarrow |f(x)-L|<\epsilon.
+\]
+
+\subsection{Definition 73*}
+Suppose $f(x)$ is defined on the interval $(a, \infty)$. Then $f(x) \to L$
+as $x \to \infty$ if for each $\epsilon > 0, \exists N>0$ such that \[
+x>N \Longrightarrow |f(x)-L|<\epsilon.
+\]
+Similarly, suppose $f(x)$ is defined on the interval $(-\infty, a)$. Then $f(x) \to L$
+as $x \to -\infty$ if for each $\epsilon > 0, \exists N<0$ such that \[
+x<N \Longrightarrow |f(x)-L|<\epsilon.
+\]
+\subsection{Definition 76*}
+Let $f$ be defined near $a \in \dom(f)$. Then $f$ is continuous at a if \[
+\lim_{x \to a}f(x) = f(a),
+\]
+i.e. if for each $\epsilon>0, \exists \delta > 0$ such that
+$|x-a|<\delta \Longrightarrow |f(x)-f(a)|<\epsilon.$
+
+\subsection{Definition 78}
+A function $f$ is continuous if it is continuous at each $a \in \dom(f)$.
+
+\subsection{Definition 83*}
+$f(I) \vcentcolon = \{ f(x) : x \in I \}$. \\
+\newline
+Let $f: I \to \mathbb{R}$ be a function. Then $f$ is bounded on $I$ if $f(I)$ is bounded, i.e.
+$\exists B$ such that $|f(I)|\leq B$.
+
+\subsection{Definition 89*}
+Let $f:[a,b] \to \mathbb{R}$. Then $f$ is continuous from above if $\lim_{x \to a^+}f(x) = f(a)$, i.e.
+for each $\epsilon>0, \exists \delta>0$ such that \[
+x \in [a, a+\delta) \Longrightarrow |f(x)-f(a)|<\epsilon.
+\]
+Similarly, $f$ is continuous from below if $\lim_{x \to a^-}f(x) = f(a)$, i.e.
+for each $\epsilon>0, \exists \delta>0$ such that \[
+x \in (a-\delta, a] \Longrightarrow |f(x)-f(a)|<\epsilon.
+\]
+\newpage{}
+\section*{Chapter 4}
+\subsection{Definition 96*}
+A function $f:I \to \mathbb{R}$ is uniformly continuous on $I$ if for each
+$\epsilon>0, \exists \Delta(\eps)>0$ such that \[
+|x-y|<\Delta \Longrightarrow |f(x)-f(y)|<\epsilon \quad \forall x, y\in I.
+\]
+\subsubsection*{Not U.C. (importantly) on $I$. A single point won't work.}
+Typically you just want the sequential characterisation to prove dicontinuity at a point. Fix $\Delta>0$. We claim
+$\exists x(\Del),y(\Del) \in \dom(f)$ such that $|x-y|<\Delta$ and $|f(x)-f(y)| \geq 1$.
+\subsubsection*{$f:[0,\infty), f(x) = x^2$ not U.C.}
+Fix $\Del>0$. Choose $y \geq \frac{1}{\Del}$, $x = y+\Del \slash 2$. Then $|x-y| = |\Del \slash 2|<\Del$ and
+\begin{align*}
+f(x)-f(y) &= x^2-y^2 \\
+&= (y+\Del \slash 2)^2-y^2 \\
+&= \Del^2 \slash 4 + y\Del \\
+&> y\Del \\
+&\geq 1.
+\end{align*}
+so $|f(x)-f(y)|>1$ and we're done.
+\newpage{}
+\subsection{Definition 101*}
+Suppose we have a sequence of functions $(f_n)_{n\geq 1}$ where
+$f_n:I \to \mathbb{R}$ for all $n$ and a function $f:I \to \mathbb{R}$.
+Then we say that $f_n$ converges to $f$ pointwise if $f_n(x) \to f(x)$ as $n \to \infty$
+for each $x \in I$. That is for each $x$, $\forall \epsilon > 0, \exists N(x, \eps) \in \mathbb{N}$ such that
+for $n>N$ we have $|f_n(x)-f(x)|<\epsilon$. \\
+\newline
+Note that $f(x) \Longleftrightarrow L$ and $f_n \Longleftrightarrow a_n$.
+\subsubsection*{$x \slash (1+x^n)$ converges pointwise to $x$ for $1 > x \geq 0$, to $0$ for $x>1$.}
+When $1>x \geq 0,$ $x \mapsto x^n \to 0$ as $n \to \infty$, so by the algebra of limits,
+function converges to $x \slash 1 = x$.
+\subsection{Definition 103*}
+$f_n$ converges to $f$ uniformly on $I$ if $\forall \epsilon > 0, \exists \Pi(\eps) \in \mathbb{N}$ such that \[
+n> \Pi \Longrightarrow |f_n(x)-f(x)|<\epsilon \quad \forall x \in I.
+\]. More succinctly,
+if $\forall \epsilon > 0, \exists \Pi \in \mathbb{N}$ such that \[
+n> \Pi \Longrightarrow d_{\infty}(f_n,f)<\epsilon.
+\].
+\subsubsection*{$f_n \not \to f$ uniformly:}
+Prove $f_n$ are continuous and $f$ isn't and use theorem 111.
+\subsection{Hidden Definition 2*}
+The distance between two functions $f$ and $g$ is the number $$d_\infty(f,g) = \sup_{x \in I}|f(x)-g(x)|$$
+\subsection{Definition 107*}
+For a set X, a metric on X is a function $d: X \times X \to [0, \infty)$
+such that for each $x,y,z \in X$:
+\begin{enumerate}
+\item $d(x,y) = 0 \text{ iff } x=y$
+\item $d(x,y) = d(y, x)$
+\item $d(x,z) \leq d(x, y) + d(y, z)$
+\end{enumerate}
+We call the set X together with the metric $d$, $(X, d)$ a metric space.
+\subsection{Definition 113*}
+Let $(f_n)_{n=1}^{\infty}$ be a sequence of functions on an interval $I$.
+Then the sequence $(f_n)$ is uniformly Cauchy in the interval $I$ if
+for each $\epsilon > 0, \exists \Pi(\eps) \in \mathbb{N}$ such that \[
+m,n > \Pi \Longrightarrow d_{\infty}(f_n, f_m)<\epsilon.
+\]
+\subsection{Definition 117*}
+Let $C_b(I) \vcentcolon=\{ f:I \to \mathbb{R}:f \text{ is continuous and bounded} \} \subseteq B(I)$.
+If $I$ is closed, then $C_b(I) = \{ f:I \to \mathbb{R}:f \text{ is continuous} \}$ by theorem 84.
+
+
+\section*{Chapter 5}
+\subsection{Definition 120}
+Fix an interval $I$, a function $f:I \to \mathbb{R}$ and a point $x \in I$. Then
+$f$ is differentiable at $x$ if \[
+\lim_{h \to 0}\frac{f(x+h)-f(x)}{h} = f'(x) \in \mathbb{R}.
+\]
+\subsection*{Applications}
+$1/x$ is differentiable for $x \neq 0$
+\subsection{Definition 134}
+Fix a function $f: \mathbb{R} \to \mathbb{R}$ that is continuous on an interval $[a,b]$.
+We define \[
+\int_{a}^{b}f(x)dx \vcentcolon= \lim_{n \to \infty}S_n(f) = \lim_{n \to \infty}\sum_{i=1}^{n} f \left( a+\frac{i}{n}(b-a) \right) \times \frac{b-a}{n}.
+\]
+\subsection{Definition 142}
+A partition of a closed interval $[a,b]$ is a sequence of numbers in $\mathbb{R}$, $P \vcentcolon= (x_0,...,x_n)$
+such that $a = x_0 <...<x_n = b$. We say $P$ is a finer partition of $[a,b]$ than $Q \vcentcolon= (y_0,...,y_m)$ if
+there is a monotonically increasing function $j \mapsto i(j)$ from $\{0,...,m \}$ to $\{0,...,n \}$
+such that $y_j = x_{i(j)} \quad \forall j \leq m$.
+\subsection{Definition 143}
+Fix a bounded function $f:[a,b] \to \mathbb{R}$ and a partition $P = (x_0,\hdots,x_n)$ of [a,b]. Then
+the upper and lower Riemann sums of $f$ with respect to $P$ are given by: \begin{align*}
+U_{P}(f) &= \sum_{i=1}^{n} \sup \{ f(x):x_{i-1} \leq x \leq x_i\} \times (x_{i} - x_{i-1}) \, \text{ and } \\
+L_{P}(f) &= \sum_{i=1}^{n} \inf \{ f(x):x_{i-1} \leq x \leq x_i\} \times (x_i-x_{i-1}), \\
+\end{align*}
+respectively.
+\subsection{Definition 146}
+Fix a bounded function $f:[a,b] \to \mathbb{R}$. The upper and lower Riemann integrals of $f$
+over $[a,b]$ are given by:
+\begin{align*}
+\upint_a^b f(x)\,dx &\vcentcolon= \inf \{ U_{P}(f):P \text{ is a partition of } [a,b] \} \\
+   \lowint_a^b f(x)\,dx &\vcentcolon= \sup \{ L_{P}(f):P \text{ is a partition of } [a,b] \} \\
+\end{align*}
+respectively. If the two integrals agree, $f$ is Riemann integrable over $[a,b]$ and
+$$ \int_a^bf(x)dx \vcentcolon= \upint_a^b f(x)dx.$$
+\section*{Chapter 6 has no definitions.}
+\section*{Chapter 7}
+\subsection{}
+Let $X \vcentcolon= (x_n)$ be a sequence in $\mathbb{R}$. Then the series
+$\sum_{n=1}^{\infty}x_n$ is said to be absolutely convergent if $\sum_{n=1}^{\infty}|x_n|$ converges in
+$\mathbb{R}$.
+\subsection{}
+Let $X \vcentcolon= (x_n)$ be a sequence of nonzero numbers in $\mathbb{R}$. Then $X$ is alternating if
+the terms $(-1)^{n+1}x_n$ all have the same sign. If $X$ is alternating, then the series it generates,
+$\sum_{n=1}^{\infty}x_n$ is said to be an alternating series.
+\section*{Chapter 8}
+\subsection{Definition 170}
+Fix $D \subseteq \mathbb{R}$, $x \in D$. If $(f_n)$ is defined on $D$, the sequence of partial sums
+$(s_k)$ of the infinite series $\sum_{n=1}^{\infty}f_n$ is defined by $s_k(x) = \sum_{n=1}^{k}f_n(x)$.
+If $(s_k)$
+converges on $D$,
+then we say $\sum_{n=1}^{\infty}f_n
+= f \text{ or } \lim_{k \to \infty}s_k = f$.
+\subsection{Definition 176}
+A series of functions $\sum_{n=0}^{\infty}f_n$ is a power series around
+$x=c$ if $$f_n(x) = a_n (x-c)^n$$ with $a_n, c \in \R \quad \forall n \in \N_0$.
+So a power series has the form: $$
+\sum_{n=0}^{\infty} a_n(x-c)^n = a_0 + a_1(x-c)+a_2(x-c)^2+\hdots+a_n(x-c)^n+ \hdots
+$$
+\subsection{Hidden Definition 3}
+Let $(b_n)$ be a bounded and nonnegative sequence. Then $$
+\limsup_{n \to \infty}b_n \vcentcolon= \inf \{ \sup \{b_n: n \geq m\}:m \geq 1 \}
+= \lim_{n \to \infty} \sup_{k \geq n} \{b_k \}.
+$$
+There are two relevant properties of the limsup:
+\subsubsection*{If $L > \limsup_{n \to \infty}b_n$}
+Then $\exists N \in \N$ such that for each $n \geq N$, $b_n < L$.
+\subsubsection*{If $M < \limsup_{n \to \infty}b_n$}
+Then $\exists$ infinitely many $n \in \N$ such that $b_n > M$.
+\subsubsection*{It always exists:}
+If $(b_n)$ is bounded, then $(\sup \{b_k:k \geq n \})_{n=1}^{\infty}$ is bounded and
+nonincreasing by definition of the supremum,
+so the limsup exists by the monotone convergence theorem. If not, it is supposedly just equal to infinity.
+\subsection{Definition 177}
+Fix a power series centred at $x=c$. Then
+\subsubsection*{If the sequence $(|a_n|^{1 \slash n})$
+is bounded:}
+Set $\rho = \limsup_{n \to \infty}(|a_n|^{1 \slash n})$. It is often easier to
+set $$\rho = \lim_{n \to \infty} \left| \frac{a_{n+1}}{a_{n}} \right|. $$
+Typically it will be easier when factorials are involved.
+It may come in handy that $\lim_{n \to \infty} n ^ {1 \slash n} = 1$.
+\subsubsection*{If not:}
+Set $\rho = + \infty$
+\subsubsection*{The radius of convergence of $\sum_{n=1}^{\infty}a_n x^n $ is defined by:}
+$$
+R \vcentcolon=
+\begin{cases}
+0 & \rho = + \infty \\
+1 \slash \rho & \rho \in (0, \infty) \\
++ \infty & \rho = 0
+\end{cases}
+$$
+The interval of convergence is the open interval $(-R,R)$. A power series may converge
+on the boundaries of the interval, this is a case by case phenomenon.
+\subsection{Hidden Definition 4}
+If and only if the sequence of remainders $(R_n(x)) \to 0$ as $n \to \infty$ in some interval $\{x:|x-x_0|<R\}$ , we say that
+the power series $$
+f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(x_0)}{n!}(x-x_0)^n, \quad |x-x_0|<R
+$$
+is the Taylor series expansion of $f$ at $x_0$.
+\end{document}
