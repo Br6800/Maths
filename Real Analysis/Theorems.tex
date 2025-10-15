@@ -1,0 +1,1092 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\DeclareMathOperator\dom{dom}
+\DeclareMathOperator\eps{\epsilon}
+\DeclareMathOperator\del{\delta}
+\DeclareMathOperator\Del{\Delta}
+\DeclareMathOperator\R{\mathbb{R}}
+\DeclareMathOperator\N{\mathbb{N}}
+\DeclareMathOperator\ran{ran}
+
+\DeclareMathOperator\inti{\int_{a}^{b}}
+
+\AtBeginEnvironment{align}{\setcounter{equation}{0}}
+\AtBeginEnvironment{gather}{\setcounter{equation}{0}}
+\title{Theorems, Corollaries, Propositions and Lemmas}
+
+
+\begin{document}
+\maketitle{}
+\newpage{}
+\section{Chapter 1 Theorems}
+\subsection{Theorem 3 PA}
+The principle of induction holds because of the peano axioms.
+\subsection{Theorem 9 PA}
+The natural numbers are well-ordered, meaning they have a total order
+such that every nonempty subset of them has a least element.
+(because of
+the peano axioms).
+\subsection{Theorem 14 Arch}
+The archimedean property.
+
+\subsection{Corollary 15 Arch}
+$\epsilon>\frac{1}{n}$
+\subsection{Corollary 16 Arch}
+$0<x<\frac{1}{n} \Longrightarrow x = 0$ because of the contrapositive of C15.
+\subsection{Theorem 17 Sup}
+square roots exist because the supremum of the set $x^2<k$ is the square root apparently.
+
+\subsection{Theorem 18 TOA}
+Let $x,y \in \mathbb{R}$, and suppose that $x<y$. Then there exists
+$q \in \mathbb{Q}$ such that $x<q<y$ because of the well ordering on the natural numbers
+and the archimedean property.
+
+\subsection{Corollary 19}
+There's also an irrational in between.
+
+
+
+\newpage{}
+\section*{Chapter 2}
+\subsection{Theorem 32}
+Algebra of limits.
+\subsection{Lemma 34}
+Fix an arbitrary cauchy sequence $a$. Since $a$ is cauchy,
+$\exists N \in \mathbb{N}$ such that $\forall n \geq N$, $|a_n-a_N|<1$.
+So $1>a_n-a_N \implies 1+a_N>a_n$ and
+$1>a_N-a_n \implies 1-a_N>-a_n$ so for
+$M \vcentcolon= \max \{ 1+a_N, 1-a_N \}$,
+we have $M \geq |a_n| \quad \forall n \geq N$.
+Let $B = \max \{|a_1|,...,|a_{N-1}|,M  \}$, then $B \geq |a_n| \quad \forall n \in \mathbb{N}$ and we're done.
+\subsection{Theorem 35}
+Squeeze theorem.
+\subsection{Theorem 36}
+The comparison theorem. \\
+\newline
+If a goes to k and b goes to L then if $a \leq b$ for all n then $k \leq L$.
+\subsection{Theorem 38}
+The Monotone convergence theorem.
+Nondecreasing sequences that are bounded above converge because for every
+$\epsilon > 0$, there exists s such that $\sup(S)-\epsilon<s$ since sup is a lub.
+\subsection{Corollary 40}
+Nonincreasing sequences that are bounded below converge too.
+\subsection{Theorem 43}
+Convergent sequences are cauchy.
+\subsection{Theorem 44}
+Completeness of $\mathbb{R}$. Every Cauchy sequence converges in $\mathbb{R}$ because
+every cauchy sequence is bounded and C40 and the supremum property and $\sup(S)-\epsilon$.
+\subsection{Theorem 47}
+A subsequence of a convergent sequence converges to the same limit.
+\subsection{Theorem 48 (BW)}
+Bolzano-weierstrass. A bounded sequence always has a convergent subsequence.
+\subsection{Theorem 50}
+The n'th term test. If a series converges, then its' terms tend to zero.
+If its' terms don't tend to zero, it doesn't converge.
+\newpage{}
+\section*{Chapter 3}
+\subsection{Theorem 80}
+The sequential characterisation of continuity. If $a_n \to a$
+as $n \to \infty$ then $f(a_n) \to f(a)$ as $n \to \infty$.
+\subsection{Corollary 81}
+Algebra of continuous functions. $f$ of $g$ is continuous too. Follows from the sequential
+characterisation of continuity and the algebra of limits.
+\subsection{Theorem 84 (BW) (three main consequences)}
+If a function is continuous on an interval, it is bounded on the interval. Follows
+from bolzano.
+\subsection{Theorem 86 (BW) (three main consequences)}
+The Extreme-Value Theorem. If $f$ is continuous on an interval,
+it attains a maximum and minimum value on that interval. Follows from
+continuity implies boundedness and the supremum property.
+\subsection{Theorem 91 (closed interval) (three main consequences).}
+The intermediate value theorem.
+\subsection{Corollary 92}
+-Removed-
+\subsection{Corollary 93 (closed interval)}
+A continuous function on the interval [0,1] is equal to its' input value at some point.
+\subsection{Corollary 95 (closed interval)}
+$f(I)$ is also an interval because of the intermediate value theorem (no shit).
+\section{Chapter 4 Theorems}
+\subsection{Theorem 98}
+\subsubsection*{Abstract:}
+The sequential characterisation of uniform continuity. An alternative definition.
+\subsubsection*{Statement:}
+A function is uniformly continuous on an interval $\iff$ \[
+\lim_{n \to \infty}|x_n-y_n|=0 \Longrightarrow \lim_{n \to \infty}|f(x_n)-f(y_n)| = 0. \]
+\subsubsection*{Proof:}
+Forward implication. Fix $\eps>0$. Since $f$ is U.C on the interval,
+$\exists \Del>0$ s.t. $$|x-y|<\Del \implies |f(x)-f(y)| < \eps.$$
+And since $\lim_{n \to \infty}|x_n-y_n| = 0$, $\exists N \in \N$ such that for
+all $n \geq N$, $|x_n-y_n| < \Del$ and hence $|f(x_n)-f(y_n)|< \eps$. \\
+\newline
+Backward implication. Suppose that $f$ is not uniformly continuous
+on the interval. Then $\exists \eps>0$ such that $|f(x)-f(y)| \geq \eps$
+with $0 \leq |x_n-y_n|<1 \slash n$ for each $n \in \N$. Construct two sequences
+$(x_n)$, $(y_n)$ as above. The squeeze theorem implies that $\lim_{n \to \infty}|x_n-y_n| = 0$
+however clearly $\lim_{n \to \infty}|f(x_n)-f(y_n)| \neq 0$.
+\subsubsection*{Application:}
+Disprove continuity at a point.
+
+\subsection*{Corollary 99}
+\subsubsection*{Abstract:}
+Uniform continuity always implies continuity.
+\subsubsection*{Statement:}
+If $f$ is uniformly continuous on $I$ then $f$ is continuous at each point in $I$.
+\subsubsection*{Proof:}
+Fix $c \in I$. Fix $(x_n)$ such that $x_n \to c$ as $n \to \infty$ and let $(y_n)$
+be given by $y_n = c$. Then $\lim_{n \to \infty}|x_n-y_n| = 0$ and so
+by Theorem 98, $\lim_{n \to \infty}|f(x_n)-f(y_n)| = 0 = \lim_{n \to \infty}|f(x_n) - f(c)|$. So
+by the sequential characterisation of continuity, $f$ is continuous at $c$.
+\subsubsection*{Application:}
+Not much. Importantly, the converse is false for open intervals.
+\subsection{Theorem 100 (BW)}
+\subsubsection*{Abstract:}
+Heine's Theorem. Continuity implies uniform continuity on closed intervals.
+\subsubsection*{Statement:}
+Suppose that $f:[a,b] \to \R$ is continuous. Then $f$ is unifromly continuous also.
+\subsubsection*{Proof by Contradiction:}
+Suppose not. Then by Theorem 98, $\exists (x_n),(y_n) \in [a,b]$
+such that $|x_n-y_n| < 1 \slash n$ and $|f(x_n)-f(y_n)| \geq 0$.
+The B-W theorem implies that $\exists (x_{n_k}),(y_{n_k})$ such that
+$x_{n_k} \to x_0 \in [a,b]$ as $n \to \infty$. \\
+\newline
+We claim that
+$y_{n_k} \to x_0$ also. Fix $\eps>0$. Then $\exists K \in \N$
+such that $|x_{n_k}-x_0|< \eps$ and $\exists N \in N$ such that $N > 1 \slash \eps$. So for each $k \geq \max \{N,K\}$...
+(Note that $n_k>N$ for $k \geq N$).
+\begin{align*}
+|y_{n_k}-x_0| &\leq |y_{n_k}-x_{n_k}| + |x_{n_k}-x_0| \\
+&< 1 \slash n_k + \eps \text{ since $x_{n_k} \to x_0$ and line } \\
+&< 2 \eps.
+\end{align*}
+So $y_{n_k} \to x_0$ also.
+\\
+\newline
+But $f$ is continuous, so we must have
+$\lim_{n \to \infty} f(x_{n_k}) = f(x_0) = \lim_{n \to \infty} f(y_{n_k})$ by Theorem 80.
+So $\lim_{n \to \infty}|f(x_{n_k})-f(y_{n_k})| = 0$, a contradiction.
+\subsubsection*{Application:}
+Spreading the bolzano disease far and wide.
+\subsection{Theorem 105}
+\subsubsection*{Abstract:}
+Uniform convergence implies pointwise convergence.
+\subsubsection*{Statement:}
+If $f_n \to f$ uniformly on I, then $f_n \to f$ pointwise on I.
+\subsubsection*{Proof:}
+\subsubsection*{Application:}
+Corollary 115. Importantly, the converse is false.
+\subsection{Lemma 108}
+The reverse triangle holds in any metric space. \begin{proof}
+The triangle inequality holds by $(D3)$. So for $x,y,z \in X$: $$
+d(x,y) + d(y,z) \geq d(x,z) \implies -d(x,y)-d(y,z) \leq -d(x,z) \implies d(y,z) \geq d(x,z) - d(x,y)
+$$
+and similarly $d(y,z) \geq d(x,y) - d(x,z)$
+\end{proof}
+\subsection{Theorem 109}
+\subsubsection*{Abstract:}
+First establish a metric space, so we can prove it is complete.
+\subsubsection*{Statement:}
+Let $B(I)$ be the set of continuous bounded functions from $I$ to $\mathbb{R}$. Then
+$(B(I), d_\infty)$ is a metric space.
+\subsubsection*{Proof:}
+$d_{\infty}(f,g) = \sup_{I}|f(x)-g(x)| \geq |f(x)-g(x)| \geq 0$. So distance is indeed positive.
+$d_{\infty}(f,g) = 0$ if $f=g$ and if not $d_{\infty}(f,g)>0$. So (D1) holds and (D2)
+is trivial. $|f(x)-g(x)| \leq |f(x)-h(x)|+|h(x)-g(x)| \leq \sup_I|f(x)-g(x)| + \sup_I|g(x)-h(x)|$ by definition and TI.
+So it's an upper bound and hence $d_{\infty}(f,h)+d_{\infty}(h,g) \geq d_{\infty}(f,g)$.
+\subsubsection*{Application:}
+Making the notation of uniform convergence more succinct.
+\subsection{Lemma 110}
+\subsubsection*{Abstract:}
+We can use $d_{\infty}$ to define uniform convergence.
+\subsubsection*{Statement:}
+$f_n \to f$ uniformly on $I \iff \forall \eps>0, \exists N \in \N: \forall n \geq N, d_{\infty}(f_n,f)< \eps$.
+\subsubsection*{Proof:}
+Fix $\eps>0$. Suppose $f_n \to f$ uniformly. Then $\exists N \in \N: \forall n \geq N, |f_n(x)-f(x)|<\eps \, \forall x \in I$.
+So $\eps$ is an upper bound so $\eps \geq \sup_I|f_n(x)-f(x)|$. Suppose $\eps>d_{\infty}(f_n,f)$. Then
+$\eps > \sup_I|f_n(x)-f(x)| \geq |f_n(x)-f(x)|\,\, \forall x \in I$.
+\subsubsection*{Application:}
+\subsection{Theorem 111}
+\subsubsection*{Abstract:}
+Uniform convergence preserves continuity.
+\subsubsection*{Statement:}
+If: \\
+\newline
+(1) $f_n \to f$ uniformly on $I$ and \\
+\newline
+(2) $f_n$ is continuous on $I$ $\forall n \in \N$ \\
+\newline
+then $f$ is also continuous on $I$.
+\subsubsection*{Proof:}
+Fix $\eps>0, a \in I$. Since $f_n \to f$ uniformly $\exists n \in \N$ such that
+\begin{align*}
+|f(x)-f(a)| &\leq |f(x)-f(a)+f_n(x)-f_n(a)-f_n(x)+f_n(a)| \\
+& \leq |f(x)-f_n(x)|+|f_n(x)-f_n(a)|+|f_n(a)-f(a)| \\
+& \leq 2d_{\infty}(f_n,f)+|f_n(x)-f_n(a)| \\
+& < 2 \eps + |f_n(x)-f_n(a)|.
+\end{align*}
+Since $f_n$ is continuous at $a$, $\exists \del>0:|x-a|< \del \implies |f_n(x)-f_n(a)| < \eps$.
+So $|f(x)-f(a)| < 3\eps$ and we're done.
+\subsubsection*{Application:}
+Disproving uniform convergence.
+
+\subsection{Theorem 112}
+\subsubsection*{Abstract:}
+Uniform convergence preserves uniform continuity.
+\subsubsection*{Statement:}
+If: \\
+\newline
+(1) $f_n \to f$ uniformly on $I$ and \\
+\newline
+(2) $f_n$ is uniformly continuous on $I$ $\forall n \in \N$ \\
+\newline
+then $f$ is also uniformly continuous on $I$.
+\subsubsection*{Proof:}
+Fix $\eps>0, x,y \in I$. Since $f_n \to f$ uniformly,
+\begin{align*}
+|f(x)-f(y)| &\leq |f(x)-f(y)+f_n(x)-f_n(y)-f_n(x)+f_n(y)| \\
+& \leq |f(x)-f_n(x)|+|f_n(x)-f_n(y)|+|f_n(y)-f(y)| \\
+& \leq 2d_{\infty}(f_n,f)+|f_n(x)-f_n(y)| \\
+& < 2 \eps + |f_n(x)-f_n(y)|.
+\end{align*}
+Since $f_n$ is uniformly continuous on $I$, $\exists \Del>0:|x-y|< \Del \implies |f_n(x)-f_n(y)| < \eps$.
+So $|f(x)-f(y)| < 3\eps$ and we're done.
+\subsubsection*{Application:}
+If $f_n \to f$ uniformly on I then if $f_n$ is uniformly continuous for all n then
+$f$ is also uniformly continuous on I.
+\subsection{Theorem 114}
+\subsubsection*{Abstract:}
+Cauchy's criterion for uniform convergence.
+\subsubsection*{Statement:}
+Let $I$ be an interval and $(f_n)_{n=1}^{\infty}$
+be a sequence of functions $f_n: I \to \mathbb{R}$. Then $f_n$ converges uniformly on $I$
+iff $(f_n)_{n=1}^{\infty}$ is uniformly Cauchy.
+\subsubsection*{Proof:}
+Fix $\eps>0$. Suppose that $f_n \to f$ uniformly. Then $\exists N \in \N: \forall m>n \geq N,
+d_{\infty}(f_n,f)< \eps$ and $d_{\infty}(f_m,f) < \eps$. So for all $x \in I$, $$
+|f_n(x) -f_m(x)| \leq |f_n(x)-f(x)| + |f_m(x)-f(x)| \leq 2d_{\infty} < 2 \eps.
+$$
+so $2 \eps$ is an upper bound and its greater than the relevant sup too. \\
+\newline
+Now suppose that $(f_n)$ is uniformly cauchy. Then $\exists N \in \N: \forall m,n \geq N,
+d_{\infty}(f_n,f_m)< \eps$. So $$
+\eps > d_{\infty} \geq |f_n(x)-f_m(x)|
+$$
+for each $x \in I$ and hence $(f_n(x))$ is cauchy on $I$. So $(f_n(x))$ converges
+and we set $$
+f(x) \vcentcolon= \lim_{n \to \infty}f_n(x).
+$$
+We claim that $f_n \to f$ uniformly.
+As before $d_{\infty}(f_n,f_m)< \eps$ for $m,n \geq N$.
+So we have \begin{align*}
+|f_n(x)-f(x)| &= |f_n(x)-f(x)+f_m(x) -f_m(x)| \\
+& \leq |f_n(x)-f_m(x)| + |f_m(x)-f(x)| \\
+& \leq d_{\infty}(f_n,f_m) + |f_m(x)-f(x)| \\
+&< \eps + |f_m(x)-f(x)|.
+\end{align*}
+Since $f_n \to f$ pointwise by definition, $\exists M_x \in \N$ for each $x \in I$
+such that for each $m \geq M_x$, $$|f_m(x)-f(x)| < \eps.$$
+So in particular for $n \geq N$ can let $m = \max \{N,M_x \}$ for each $x \in I$
+to obtain that $$
+|f_n(x)-f(x)|<\eps+|f_m(x)-f(x)|<2 \eps.
+$$
+\subsubsection*{Application:}
+
+\subsubsection*{Corollary 115}
+\subsubsection*{Abstract:}
+Uniform cauchiness and pointwise convergence are enough to imply
+uniform convergence.
+\subsubsection*{Statement:}
+Suppose \\
+\newline
+(1), $(f_n)$ converges pointwise to $f$. \\
+\newline
+(2), $(f_n)$ is uniformly Cauchy \\
+\newline
+then $f_n \to f$ uniformly on $I$.
+\subsubsection*{Proof:}
+By theorem 114, $f_n \to g$ uniformly for some function $g$. We claim that
+$f_n \to g$ pointwise. Reason is simple, uniform convergence implies pointwise.
+So $f_n \to g$ and $f_n \to f$ pointwise. So by the uniqueness of limits, $f = g$.
+\subsubsection*{Application:}
+
+\subsection*{Lemma 116}
+\subsubsection*{Abstract:}
+Uniform convergence preserves boundedness.
+\subsubsection*{Statement:}
+Suppose that $f_n:I \to \R$ are bounded on $I$. Then if $f_n \to f$
+uniformly, $f$ is bounded on $I$.
+\subsubsection*{Proof:}
+Fix $\eps>0$. Since $f_n \to f$ uniformly,
+$\exists N \in \N: \forall n \geq N, d_{\infty}(f_n,f)< \eps$.
+So for each $x \in I$, $$
+\eps > d_{\infty}(f_n,f) \geq |f_n(x)-f(x)| \geq |f(x)|-|f_n(x)| \geq |f(x)|-M
+$$
+and so $\eps + M > |f(x)|$ are we're done.
+\subsubsection*{Application:}
+\section*{Chapter 5}
+\subsection*{Brendan's Lemma}
+Suppose that $|f(x)-g(x)| \geq |h(x)-k(x)|$ for each $x \in I$. Then
+obviously $\sup_I |f(x)-g(x)| \geq |f(x)-g(x)| \geq |h(x)-k(x)|$ for each $x \in I$.
+So the LHS is an upper bound and so $\sup_I |f(x)-g(x)| \geq \sup_I |h(x)-k(x)|$.
+\subsection*{Summary}
+\begin{align*}
+\text{ Propositions: } [119,133] &= 2 \\
+\text{ Lemmas: } [122,125,127,136,137,138,139,144] &= 8 \\
+\text{ Theorems: }  [123,124,128,130,131,140,148] &= 7 \\
+\text{ Corollaries: } [126,129,132,141,145] &= 5 \\
+\end{align*}
+\subsection{Proposition 119:}
+\subsubsection*{Abstract:}
+The algebra of limits. Composition law only applies under strict conditions.
+\subsubsection*{Statement:}
+Suppose $f$ and $g$ are defined near a. Fix $\lambda \in \mathbb{R}, \lim_{x \to a}f(x) = L, \lim_{x \to a }g(x) = M$.
+Then \begin{align}
+\lim_{x \to a}(f+g)(x) &= L+M \\
+\lim_{x \to a}(\lambda f)(x) &= \lambda L \\
+\lim_{x \to a}(fg)(x) &= LM \\
+\lim_{x \to a}\frac{f}{g}(x) &= \frac{L}{M} \text{ For $M \neq 0$ } \\
+\lim_{x \to a}f \circ g (x) &= L \text{ when $f$ is cont. at $M \implies$ $\lim_{y \to M}f(y) = f(M) = L$  }
+\end{align}
+\subsubsection*{Proof:}
+
+\subsubsection*{Application:}
+
+\subsection{Lemma 122:}
+\subsubsection*{Abstract:}
+Differentiable implies continuous.
+\subsubsection*{Statement:}
+Fix $f:I \to \mathbb{R}$, $x \in I$.
+If $f$ is differentiable at $x$, then $f$ is also continuous at $x$.
+\subsubsection*{Proof:}
+Fix $\epsilon>0$. Suppose $f:I \to \mathbb{R}$ is differentiable at some $x \in I$. Then
+$\exists \delta_1>0, L\in \mathbb{R}$ such that $|h-0|<\delta_1 \implies |\frac{f(x+h)-f(x)}{h}-L|<\epsilon$.
+Set $h=a-x \implies x+h = a$. Then
+$|x-a|<\delta_1 \implies |\frac{f(x)-f(a)}{x-a}-L|<\epsilon$.
+So \begin{align*}
+\epsilon &> \left| \frac{f(x)-f(a)}{x-a}-L \right| \\
+& \geq \left| \frac{f(x)-f(a)}{x-a} \right|-|L| \text{ By RTI } \\
+& \geq \frac{|f(x)-f(a)|}{|x-a|}-|L|.
+\end{align*}
+Let $\delta_2 = \frac{\epsilon}{\epsilon + |L|}>0$. Then for $\delta = \min \{\delta_1,\delta_2 \}$,
+$|x-a|<\delta \implies \eps > \frac{|f(x)-f(a)|}{\frac{\eps}{\eps + |L|}}-|L|
+\implies \eps > |f(x)-f(a)|$.
+\subsubsection*{Application:}
+Theorem 124.
+\subsection{Theorem 123:}
+\subsubsection*{Abstract:}
+The lesser L Hopital rule. This is a special case that needs continuity.
+\subsubsection*{Statement:}
+Let $f$ and $g$ be defined on an open interval $I$, fix $a \in I$.
+If the following hold:
+\begin{gather*}
+f(a) = g(a) = 0, \\
+f \text{ and } g \text{ are continuously differentiable on } I, \\
+g'(a) \neq 0 \\
+\end{gather*}
+then \[
+\lim_{x \to a}\frac{f(x)}{g(x)} = \frac{f'(a)}{g'(a)} = \lim_{x \to a}\frac{f'(x)}{g'(x)}.
+\]
+\subsubsection*{Proof:}
+Set $h = x-a$.
+\begin{align*}
+\lim_{x \to a}\frac{f(x)}{g(x)} &= \lim_{x \to a}\frac{f(x)-f(a)}{g(x)-g(a)} \\
+&= \lim_{x \to a}\frac{\frac{f(a+h)-f(a)}{h}}{\frac{g(a+h)-g(a)}{h}} \\
+&= \frac{f'(a)}{g'(a)} \text{ By AOL. } \\
+&= \lim_{x \to a}\frac{f'(x)}{g'(x)} \text{ By continuity of $f'$ and $g'$ at $a$.}
+\end{align*}
+\subsubsection*{Application:}
+
+\subsection{Lemma 125:}
+\subsubsection*{Abstract:}
+Carathéodory’s Theorem. It's a different way of defining
+differentiability.
+\subsubsection*{Statement:}
+Fix $f:I \to \mathbb{R}$, $x_0 \in I$. Then $f$
+is differentiable at $x_0$ iff:
+\begin{gather}
+\exists L:I \to
+\mathbb{R} \text{ such that } \forall x \in I, \quad  f(x)-f(x_0) = L(x)(x-x_0) \\
+L \text{ is continuous at } x_0.
+\end{gather}
+(1) and (2) together imply $L(x_0) = f'(x_0)$.
+\subsubsection*{Proof:}
+\paragraph{$(\implies)$}
+Choose $L(x) \vcentcolon=
+\begin{cases}
+      \frac{f(x)-f(x_0)}{x-x_0} & x \neq x_0 \\
+      f'(x_0) & x = x_0
+\end{cases}$. Then (1) holds and (2) holds because: \[
+\lim_{x \to x_0} L(x) = \lim_{x \to x_0} \frac{f(x)-f(x_0)}{x-x_0} = f'(x_0) = L(x_0). \]
+\paragraph{$(\impliedby)$}
+Set $h=x-x_0$, then by (2),
+\[
+\lim_{x \to x_0}L(x) = \lim_{x \to x_0}\frac{f(x)-f(x_0)}{x-x_0} = \lim_{h \to 0}\frac{f(x_0+h)-f(x_0)}{h} = L(x_0)
+\]
+so the derivative at $x_0$ exists, $f'(x_0) = L(x_0)$, and $f$ is differentiable at $x_0$.
+\subsubsection*{Application:}
+Theorem 124, the chain rule.
+\subsection{Theorem 124:}
+\subsubsection*{Abstract:}
+The algebra of differentiable functions.
+\subsubsection*{Statement:}
+Fix $f,g:I \to \mathbb{R}, x_0 \in I, \lambda \in \mathbb{R}$. If $f$ and $g$
+are differentiable at $x$, then
+\begin{align}
+(f+g)'(x_0) &= f'(x_0)+g'(x_0) \\
+(\lambda f)'(x_0) &= \lambda f'(x_0) \\
+(fg)'(x_0) &= g(x_0)f'(x_0)-f(x_0)g'(x_0) \\
+\left( \frac{f}{g} \right) '(x_0) &= \frac{g(x_0)f'(x_0)-f(x_0)g'(x_0)}{g^2(x_0)} \\
+(f \circ g)'(x_0) &= f'(g(x_0))g'(x_0) \text{ provided $f$ is differentiable at $g(x_0)$}.
+\end{align}
+\subsubsection*{Proof:}
+\paragraph{(1)}
+Use $(f+g)(x_0) = f(x_0)+g(x_0)$ by definition.
+\paragraph{(2)}
+Use $(\lambda f)(x_0) = \lambda f(x_0)$ by definition.
+\paragraph{(3)}
+Let $A = f(x_0+h), a = f(x_0)$ and same for $B,b$ and $g$. Then
+\begin{align*}
+(fg)'(x) &= \lim_{h \to 0}\frac{AB-ab}{h} \\
+&= \lim_{h \to 0}\frac{AB-Ab+Ab-ab}{h} \\
+&= \lim_{h \to 0}\frac{A(B-b)}{h}+\lim_{h \to 0}\frac{b(A-a)}{h} \\
+&= \lim_{h \to 0}A \times \lim_{h \to 0}\frac{B-b}{h}+b\lim_{h \to 0}\frac{A-a}{h} \text{ By AOL} \\
+&= f(x_0)g'(x_0)+g(x_0)f'(x_0) \text{ By continuity and definition.} \\
+\end{align*}
+Note that continuity at $x_0$ follows from lemma 122. To see that continuity gives the result,
+set $x_0 = a+h$ in the usual definition, then the limit of $f(a+h) = f(a)$ as $h \to 0$.
+\paragraph{(4)}
+\begin{align*}
+\left( \frac{f}{g} \right) '(x_0) &= \lim_{h \to 0}\frac{\frac{A}{B}-\frac{a}{b}}{h} \\
+&= \lim_{h \to 0}\frac{\frac{Ab-aB}{Bb}}{h} \\
+&= \lim_{h \to 0}\frac{\frac{Ab-ab+ab-aB}{Bb}}{h} \\
+&= \lim_{h \to 0}\frac{b \frac{A-a}{h} - a \frac{B-b}{h}}{Bb} \\
+&= \frac{bf'(x_0)-ag'(x_0)}{b^2} \text{ By AOL, continuity and definition.} \\
+&= \frac{g(x_0)f'(x_0)-f(x_0)g'(x_0)}{g^2(x_0)}.
+\end{align*}
+\paragraph{(5)}
+By Lemma 122, $g$ is continuous at $x_0$ and $f$ is continuous at $g(x_0)$.
+Suppose $g(I) \subseteq I$. Then $f \circ g$ is continuous at $x_0$ by the AOCF,
+so we can use Caratheodory's definition of differentiability (Lemma 125). Note that
+$g(x) \in I$ for all  $x \in I$ (we treat $g(x)$ as some $y \in I$)
+and as before, $f$ is continuous at $g(x_0)$ (we treat $g(x_0)$ as some $y_0$ where $f$ is continuous).
+By Lemma 125, there exist $q,r:I \to \mathbb{R}$ such that $\forall x \in I$:
+\begin{align}
+f(g(x))-f(g(x_0)) &= q(g(x))(g(x)-g(x_0)) \\
+g(x)-g(x_0) &= r(x)(x-x_0).
+\end{align}
+Substituting (2) into (1), we have: \[
+f(g(x))-f(g(x_0)) = q(g(x))r(x)(x-x_0).
+\]
+Now, $q(g(x))r(x)$ is continuous at $x_0$ by AOCF, so \[
+\lim_{x \to x_0}q(g(x))r(x) = \lim_{x \to x_0}\frac{f(g(x))-f(g(x_0))}{x-x_0} = q(g(x_0))r(x_0) = f'(g(x_0))g'(x_0)
+\]
+from the final implication discussed in lemma 125. As usual, you can let $h=x-x_0$ to yield the usual definition.
+%\begin{align*}
+%\left( f \circ g \right) '(x) &=  \\
+%&=  \\
+%&=  \\
+%&=  \\
+%&=  \\
+%&= .
+%\end{align*}
+\subsubsection*{Application:}
+
+\subsection{Corollary 126:}
+Derivative of $x \mapsto x^n = nx^{n-1} \quad \forall n \in \mathbb{N}_0$.
+
+\subsection{Lemma 127:}
+\subsubsection*{Abstract:}
+Turning points have derivative zero.
+\subsubsection*{Statement:}
+Suppose $f$ is differentiable on an open interval $(a,b)$ and achieves
+ a maximum or minimum at $c \in (a,b)$. Then $f'(c) = 0$.
+\subsubsection*{Proof:}
+Suppose $f$ achieves a maximum at $c \in (a,b)$. Choose $\del>0$ such that
+$0<|h|<\del \implies$
+$|\frac{f(c+h)-f(c)}{h}-f'(c)|<\frac{|f'(c)|}{2}$. Then $h \in (-\del,\del)$, so
+we can choose $h = -\frac{\del}{2}$ and $h = \frac{\del}{2}$ to obtain:
+\begin{gather}
+\frac{f(c-\frac{\del}{2})-f(c)}  {-\frac{\del}{2}} <f'(c)+\frac{|f'(c)|}{2}  \\
+\frac{f(c+\frac{\del}{2})-f(c)}  {\frac{\del}{2}} >f'(c)-\frac{|f'(c)|}{2}.
+\end{gather}
+If $f'(c)>0$, then (2) implies that $f(c+\frac{\del}{2})>f(c)$, so we must have $f'(c) \leq 0$.
+If $f'(c)<0$, then (1) implies that $f(c-\frac{\del}{2})>f(c)$, so we must have $f'(c) \geq 0$.
+By TO2, $f'(c) = 0$.
+\subsubsection*{Application:}
+Theorem 128 (Rolle's Theorem).
+\subsection{Theorem 128 (BW)}
+\subsubsection*{Abstract:}
+Rolle's Theorem. Nice functions with the same endpoints have a flat point.
+\subsubsection*{Statement:}
+Suppose that \begin{gather}
+\text{$f$ is differentiable on $(a,b)$ and cts on $[a,b]$,} \\
+f(a) = f(b).
+\end{gather}
+Then $\exists x_0 \in (a,b)$ such that $f'(x_0) = 0$.
+\subsubsection*{Proof:}
+By EVT, $f$ achieves a maximum or minimum on $[a,b]$. If $f$ achieves a maximum or minimum at any point other than the endpoints,
+Lemma 127 implies that any point $c \in (a,b)$ such that $f$ achieves
+a minimum or maximum at $c$
+satisfies $f'(c) = 0$. If a maximum or minimum only occur at the endpoints, then
+$f(p)= f(q) \,\, \forall p,q \in (a,b)$. Since $f$ is continuous on $[a,b]$, we must have
+$f(a)=f(b) = f(p) \,\, \forall p \in (a,b)$, so $f$ is a constant function on $[a,b]$ and so obviously
+$\exists c \in [a,b]$ such that $f'(c) = 0$, any such $c \in [a,b]$ will do.
+\subsubsection*{Application:}
+$f:[0,1] \to \R$ given by $f(x) = x^3e^{\sqrt{x}}-ex$
+is cts on $[0,1]$ by AOCF and diff on $(0,1)$ by AODF, since $\sqrt{x}$
+is differentiable on $(0, \infty)$ and obviously the other components are too.
+Since $f(0) = f(1)$, Rolle's theorem states $f'(c) = 0$ for some $c \in (0,1)$.
+\paragraph{Theory:}
+Theorem 130 (CMVT) and MVT.
+\subsection{Corollary 129 (BW)}
+\subsubsection*{Abstract:}
+The mean value theorem.
+\subsubsection*{Statement:}
+Suppose that $f$ is differentiable on $(a,b)$ and cts on $[a,b]$. Then
+$\exists c \in (a,b)$ such that $f'(c) = \frac{f(b)-f(a)}{b-a}$.
+\subsubsection*{Proof:}
+\paragraph{Working out}
+We need to choose a function $g$ that satisfies $g(a) = g(b)$
+and $g'(x) = f'(x)-\frac{f(b)-f(a)}{b-a}$. Integrating,
+$g(x) = f(x) - x\frac{f(b)-f(a)}{b-a} +c$. We note that $g(a)=g(b)$ no matter the choice of $c$.
+Choose $c=0$ if you like.
+% why is the choice of c not unique...
+% it seems as long as -x is present, any +c will do
+\begin{proof}
+Let $g(x) = f(x) - x\frac{f(b)-f(a)}{b-a}$. Then $g(x)$ is cts on $[a,b]$ and diff
+on $(a,b)$
+by the AOCF and AODF, so $g'(c) = 0$ for some $c \in (a,b)$ by Rolle's theorem, because $g(a)=g(b)$.
+\end{proof}
+\subsubsection*{Application:}
+
+\subsection{Theorem 130 (BW)}
+\subsubsection*{Abstract:}
+Cauchy's mean value theorem.
+\subsubsection*{Statement:}
+Suppose $f,g$ are differentiable on $(a,b)$ and cts on $[a,b]$. Then $\exists c \in (a,b)$ such that
+\[
+(f(b)-f(a))g'(c) = (g(b)-g(a))f'(c).
+\]
+\subsubsection*{Proof:}
+If $g(a)=g(b)$, then result is obvious.
+If $g(a) \neq g(b)$, let $h:[a,b] \to \R$ be given by \[
+h(x) = f(x)-g(x)\frac{f(b)-f(a)}{g(b)-g(a)}.
+\]
+Then $h(a)=h(b)$ and $h$ is cts on $[a,b]$ and diff on $(a,b)$ by AOCF and AODF.
+So by Rolle's theorem, $h'(c) = 0$ for some $c \in (a,b)$ and the result follows.
+\subsubsection*{Application:}
+L'Hopitals rule (strong).
+\subsection{Theorem 131 (BW)}
+\subsubsection*{Abstract:}
+L Hopital's Rule.
+\subsubsection*{Statement:}
+Let $c,L \in \R$. Suppose that \begin{gather}
+\text{$f$ and $g$ are diff on an open interval $I$
+with one of the end points being $c$} \\
+g(x) \neq 0 \quad \forall x \in I \\
+g'(x) \neq 0 \quad \forall x \in I \\
+\text{$f$ and $g$ are cts at $c$ and }f(c)=g(c)= 0 \\
+\lim_{x \to c}\frac{f'(x)}{g'(x)}= L.
+\end{gather}
+Then $$\lim_{x \to c}\frac{f(x)}{g(x)}= L.$$
+\subsubsection*{Proof:}
+\paragraph{When $I=(c,d), d \in \R:$}
+CMVT guarantees for each
+$x \in I$, $\exists \xi(x) \in (c,x):(f(x)-f(c))g'(\xi(x))=f'(\xi(x))(g(x)-g(c))$.
+Since $\xi(x) \in I \quad \forall x \in I$, we can use (3) and divide through by $g'(\xi(x))$ and
+use (4) and (2) to obtain that \[
+\frac{f(x)}{g(x)} = \frac{f'(\xi(x))}{g'(\xi(x))} \quad \forall x \in I.
+\]
+So \[
+\lim_{x \to c}\frac{f(x)}{g(x)} = \lim_{x \to c}\frac{f'(\xi(x))}{g'(\xi(x))}.
+\]
+Fix $\eps>0$. We have $\lim_{x \to c}\frac{f'(x)}{g'(x)}= L$,
+so $\exists \del >0$ such that $0<|x-c|<\del \implies \left| \frac{f'(x)}{g'(x)}-L \right| <\eps$.
+Since $c+\del > x > \xi(x) > c > c- \del$, $ \left| \frac{f'(\xi(x))}{g'(\xi(x))}-L \right| <\eps$
+for this same $\del$. So we have $$\lim_{x \to c}\frac{f'(\xi(x))}{g'(\xi(x))}= \lim_{x \to c}\frac{f(x)}{g(x)} = L.$$
+\paragraph{When $I=(d,c), d \in \R:$}
+Note that when $d<c, 2c-d>c$.
+Let $f_2,g_2:(c,2c-d) \to \R$ be given by $f_2(x) = f(2c-x), g_2(x) = g(2c-x)$.
+Now, $x \mapsto 2c-x$ is continuous, so $\lim_{x \to c}2c-x = 2c-c = c$.
+so by the composition rule in the AOL, \[
+\lim_{x \to c}\frac{f_2(x)}{g_2(x)} = \lim_{x \to c}\frac{f(x)}{g(x)}.
+\]
+By the chain rule, $f_2'(x) = f'(2c-x) = -f'(2c-x)$ and similarly
+$g_2'(x) = g'(2c-x) = -g'(2c-x)$, so \[
+\lim_{x \to c}\frac{f_2'(x)}{g_2'(x)} = \lim_{x \to c}\frac{-f'(2c-x)}{-g'(2c-x)}
+= \lim_{x \to c}\frac{-f'(x)}{-g'(x)} = \lim_{x \to c}\frac{f'(x)}{g'(x)},
+\]
+the second equality following from the composition rule in the AOL.
+Now, $(c,2c-d)$ is just an interval of the same form as the other case,
+so similarly, \[
+\lim_{x \to c}\frac{f_2(x)}{g_2(x)} = \lim_{x \to c}\frac{f_2'(x)}{g_2'(x)}
+\]
+and so
+$$\lim_{x \to c}\frac{f'(x)}{g'(x)} = \lim_{x \to c}\frac{f(x)}{g(x)} = L.$$
+\subsubsection*{Application:}
+
+\subsection{Corollary 132:}
+\subsubsection*{Abstract:}
+L hopital's rule applied $n$ times.
+\subsubsection*{Statement:}
+Suppose that $a=c$ or $b = c$ and
+\begin{gather}
+f(c) = f'(c) = ... = f^{(n-1)}(c) = 0 = g^{(n-1)}(c) = ... = g'(c) = g(c) \\
+f,f',...,f^{(n-1)} \text{ and $g,g',...,g^{(n-1)}$ are cts at $c$ and diff on (a,b).} \\
+g(x),g'(x),...,g^{(n-1)}(x) \neq 0 \quad \forall x \in (a,b) \\
+\lim_{x \to c}\frac{f^{(n)}(x)}{g^{(n)}(x)} = L.
+\end{gather}
+Then \[
+\lim_{x \to c}\frac{f(x)}{g(x)} = L.
+\]
+\subsubsection*{Proof:}
+Induction and LH rule twice.
+\subsubsection*{Application:}
+
+\subsection{Proposition 133:}
+\subsubsection*{Abstract:}
+$S_n(f)$ converges.
+\subsubsection*{Statement:}
+Suppose that $f:[a,b] \to \R$ is continuous. Then the sequence
+$(S_n(f))_{n \in \N}$
+converges.
+\subsubsection*{Proof:}
+It suffices to prove the sequence is Cauchy. Fix $\eps > 0$.
+Since $f$ is cts
+on $[a,b]$, it is also uniformly cts by Heine's theorem. So $\exists \Del>0:\forall x,y \in [a,b], |x-y|<\Del \implies
+|f(x)-f(y)|< \frac{ \eps }{2(b-a)}$. By the arch property, $\exists N \in \N$ such that $N > \frac{b-a}{\Del}$. So
+for $m,n \geq N$, we have
+\begin{align*}
+|S_m(f) - S_{mn}(f)| &= \left| \sum_{i=1}^{m}f \left( a+\frac{i}{m}(b-a) \right)
+\frac{b-a}{m} - \sum_{j=1}^{mn}f \left( a+\frac{\bar{j}}{mn}(b-a) \right) \frac{b-a}{mn} \right| \\
+&= \left| \sum_{i=1}^{m}f \left( a+\frac{i}{m}(b-a) \right) \frac{b-a}{m} - \sum_{i=1}^{m}\sum_{j=1}^{n}X \right| \\
+\end{align*}
+for some $X(i,j)$. Since $$\sum_{p=1}^{mn}p = \sum_{i=1}^{m}\sum_{j=1}^{n}n(i-1)+j = (1+...+n)+...+((m-1)n+1+...+(m-1)n+n=mn)$$
+and $\bar{j} \iff p$ and $\bar{j}$ is the only thing that changes in the sum, \begin{align*}
+|S_m(f) - S_{mn}(f)| &=
+\left| \sum_{i=1}^{m}f(a+\frac{i}{m}(b-a))\frac{b-a}{m} - \sum_{i=1}^{m}\sum_{j=1}^{n} \left( f \left( a+\frac{n(i-1)+j}{mn}(b-a) \right) \frac{b-a}{mn} \right) \right| \\
+& \leq \sum_{i=1}^{m} \left| f \left( a+\frac{i}{m}(b-a) \right) \frac{b-a}{m} - \sum_{j=1}^{n}
+\left( f \left( a+\frac{n(i-1)+j}{mn}(b-a) \right) \frac{b-a}{mn} \right) \right| \text{ by TI } \\
+& \leq \frac{b-a}{mn} \sum_{i=1}^{m} \sum_{j=1}^{n}
+\left| f \left( a+\frac{i}{m}(b-a) \right) -
+f \left( a+\frac{n(i-1)+j}{mn}(b-a) \right) \right| \text{ by TI } \\
+&\vcentcolon= \frac{b-a}{mn} \sum_{i=1}^{m} \sum_{j=1}^{n}
+\left| f \left( A \right) -
+f \left( B \right) \right|.\\
+\end{align*}
+Now since $|A-B|
+ < \Del$, $|f(A)-f(B)| < \frac{\eps}{2(b-a)}
+ \implies |S_m(f) - S_{mn}(f)| < \frac{\eps}{2}$,
+ so the sequence is Cauchy and converges in $\R$.
+\subsubsection*{Application:}
+
+\subsection{Lemma 136:}
+\subsubsection*{Abstract:}
+If one function is always larger than another, the integral is always larger too.
+\subsubsection*{Statement:}
+If $f$ and $g$ are cts on a closed interval $[a,b]$ and $f(x) \geq g(x) \quad \forall x \in [a,b],$
+then $$
+\int_{a}^{b}f(x)dx \geq \int_{a}^{b}g(x)dx.
+$$
+\subsubsection*{Proof:}
+
+\subsubsection*{Application:}
+
+\subsection{Lemma 137:}
+\subsubsection*{Abstract:}
+The absolute of the integral is less than or equal to the integral of the absolute.
+\subsubsection*{Statement:}
+If $f$ is cts on a closed interval $[a,b]$, then $$
+\int_{a}^{b}|f(x)|dx \geq \left| \int_{a}^{b}f(x)dx \right|
+$$
+and
+$$
+(b-a)\min_{x \in [a,b]}f(x) \leq \inti f(x)dx \leq (b-a)\max_{x \in [a,b]}f(x).
+$$
+\subsubsection*{Proof:}
+
+\subsubsection*{Application:}
+
+\subsection{Lemma 138:}
+\subsubsection*{Abstract:}
+You can split integration into two parts.
+\subsubsection*{Statement:}
+If $f$ is integrable on a closed interval $[a,b]$ and $c \in [a,b]$, then
+$$
+\inti f(x)dx = \int^c_a f(x)dx + \int^b_c f(x)dx.
+$$
+\subsubsection*{Proof:}
+
+\subsubsection*{Application:}
+
+\subsection{Lemma 139:}
+\subsubsection*{Abstract:}
+If a function is continuous on a closed interval, then the integral function
+is also continuous on any closed subinterval, as long as the subinterval shares a boundary point.
+\subsubsection*{Statement:}
+If $f$ is cts on a closed interval $[a,b]$,
+then $F:[a,b] \to \R$ given by $F(t) \vcentcolon= \int_a^t f(x)dx$ is cts on
+$[a,b]$ and so is $\int_t^bf(x)dx$.
+\subsubsection*{Proof:}
+
+\subsubsection*{Application:}
+
+\subsection{Theorem 140:}
+\subsubsection*{Abstract:}
+The fundamental theorem of calculus.
+\subsubsection*{Statement:}
+
+\subsubsection*{Proof:}
+
+\subsubsection*{Application:}
+
+\subsection{Corollary 141:}
+\subsubsection*{Abstract:}
+If the derivative of two integral functions is the same of a closed interval,
+then the distance between them is constant on that interval.
+\subsubsection*{Statement:}
+
+\subsubsection*{Proof:}
+
+\subsubsection*{Application:}
+
+\subsection{Lemma 144:}
+\subsubsection*{Abstract:}
+Inequalities of Riemann sums.
+\subsubsection*{Statement:}
+
+\subsubsection*{Proof:}
+
+\subsubsection*{Application:}
+
+\subsection{Corollary 145:}
+\subsubsection*{Abstract:}
+The upper Riemann integral of a function
+over a closed interval is greater than or equal to
+the lower Riemann integral.
+\subsubsection*{Statement:}
+
+\subsubsection*{Proof:}
+
+\subsubsection*{Application:}
+
+\subsection{Theorem 148:}
+\subsubsection*{Abstract:}
+Continuous on a closed interval implies Riemann integrable.
+\subsubsection*{Statement:}
+
+\subsubsection*{Proof:}
+
+\subsubsection*{Application:}
+\newpage{}
+\section*{Chapter 6}
+\subsection{Theorem 150:}
+% not BW since 111 isn't
+\subsubsection*{Abstract:}
+The pointwise limit function of a sequence of
+differentiable functions $(f_n)$ is differentiable
+if the sequence $(f'_n)$ is continuous and uniformly convergent; and it's derivative
+$$
+(\lim_{n \to \infty}f_n)' = \lim_{n \to \infty}(f'_n),
+$$
+i.e. the limit and derivative are interchangeable.
+\subsubsection*{Statement:}
+If: \begin{gather}
+f_n \to f \text{ pointwise } \\
+f'_n \to g \text{ uniformly } \\
+f'_n \text{ are cts }
+\end{gather}
+Then $f$ is diff on $[a,b]$ with $f' = g$ and $f_n \to f$ uniformly.
+\subsubsection*{Proof:}
+
+\subsubsection*{Application:}
+
+\subsection{Theorem 151:}
+\subsubsection*{Abstract:}
+Under certain conditions, the limit can be moved outside the integral;
+i.e. the limit and integral are interchangeable.
+\subsubsection*{Statement:}
+If: \begin{gather}
+f_n \in R[a,b] \impliedby \text{ cts on $[a,b]$} \\
+f_n \to f \text{ uniformly }
+\end{gather}
+Then $f \in R[a,b]$ and $$
+\lim_{n \to \infty} \inti f_n = \inti f.
+$$
+\subsubsection*{Proof:}
+
+\subsubsection*{Application:}
+
+\section*{Chapter 7}
+\subsection{Theorem 153:}
+\subsubsection*{Abstract:}
+Cauchy's criterion for series.
+\subsubsection*{Statement:}
+The series $\sum_{n=1}^{\infty}x_n$ converges $\iff$ \\
+\newline
+$\forall \eps>0, \exists M(\eps) \in \N: \forall m>n \geq M(\eps)$, $$
+|s_m-s_n| = |x_{n+1}+x_{n+2}+...+x_{m}| < \eps.
+$$
+\subsubsection*{Proof:}
+See theorem 114.
+\subsubsection*{Application:}
+\subsection{Theorem 154:}
+\subsubsection*{Abstract:}
+The sequence of partial sums must be bounded for a series to converge.
+\subsubsection*{Statement:}
+Suppose $(x_n) \geq 0$. Then the series $\sum_{n=1}^{\infty}x_n$ converges $\iff$ \\
+\newline
+$$\exists M \in \R: M \geq |s_k| \quad \forall k \in \N.$$
+\subsubsection*{Proof:}
+\paragraph{Forward Implication: }
+Set the sum of the series equal to $L \geq 0$. Then clearly
+$L \geq |s_k|$ for all $k \in \N$, since the partial sums are nondecreasing.
+\paragraph{Backward Implication: } Fix $\eps>0$. Let $S = \{s_k:k \in \N \}$.
+$S$ is nonempty because $s_1 = x_1 \in S$. Since $(s_k)$ is bounded, $\exists B \in \R:
+|s_k| \leq B \quad \forall k \in \N$. In particular, $B$ is an upper bound for $S$ and
+so $\sup \{ S\} \in \R$. By lemma 39, $\exists N \in \N: s_N \in S $
+such that $s_N > \sup \{ S \} - \eps$.
+Suppose $n \geq N$. Since $(s_n)$ is nondecreasing, $\sup \{ S \} + \eps>s_n > \sup \{ S \} - \eps$
+too, i.e. $|s_n - \sup \{ S \}| < \eps$.
+
+
+\subsubsection*{Application:}
+The sum of a series is the supremum of its' sequence of partial sums.
+
+\subsection{Theorem 156:}
+\subsubsection*{Abstract:}
+The comparison test.
+\subsubsection*{Statement:}
+Suppose $y_n \geq x_n \geq 0$ for $n \geq K$. Then \\
+\newline
+(a) Convergence of $\sum y_n \implies $ convergence of $\sum x_n$ \\
+\newline
+(b) Divergence of $\sum x_n \implies $ Divergence of $\sum y_n$
+\subsubsection*{Proof:}
+\paragraph{(a):} Fix $\eps>0$. Since $\sum y_n$ converges, by Cauchy's criterion
+$\exists M \in \N: \forall m>n \geq M, \eps > |y_{n+1}+...+y_{m}|$. So for $m>n \geq \max \{K,M \}$,
+$$\eps > |y_{n+1}+...+y_{m}|= y_{n+1}+...+y_{m} \geq x_{n+1}+...+x_{m} = |x_{n+1}+...+x_{m}|,$$
+so $\sum x_n$ converges by Cauchy's criterion.
+\paragraph{(b):}
+Fix $M \in \N$. Since $\sum x_n$ diverges, $\exists m>n>M$ such that $$
+|x_{n+1}+...+x_{m}| \geq 1 \implies |y_{n+1}+...+y_{m}| \geq 1
+$$
+also.
+\subsubsection*{Application:}
+The series $Y = \sum 1 \slash \sqrt{n-2}$ has terms greater or equal to
+$\sum 1 \slash \sqrt{n}$ which diverges, so part (b) implies $Y$ diverges.
+\subsection{Theorem 157:}
+\subsubsection*{Abstract:}
+Limit comparison test 1.
+\subsubsection*{Statement:}
+Suppose $(x_n),(y_n)>0$ and that $r =
+\lim_{n \to \infty}(\frac{x_n}{y_n}) \in \R$. \\
+\newline
+(1) If $r \neq 0$ then Convergence of $\sum x_n \iff$ convergence of $\sum y_n$,
+so by contrapositive if one diverges they both diverge.
+\\
+\newline
+(2) If $r = 0$ then Convergence of $\sum y_n \implies$ convergence of $\sum x_n$, so
+by contrapositive if $\sum x_n$ diverges $\sum y_n$ diverges too.
+\subsubsection*{Proof:}
+(1) Fix $\eps = r \slash 2 >0$.
+Then $\exists N \in \N: \forall n \geq N, |x_n \slash y_n - r| < r \slash 2
+\implies 3r \slash 2 > x_n \slash y_n > r \slash 2 \implies (3r \slash 2)y_n > x_n > (r \slash 2)y_n$. So
+theorem 156 (a) implies, since LHS $\geq$ MHS $\geq 0$ that \\
+\newline
+Convergence of $\sum (3r \slash 2)y_n \implies $ convergence of $\sum x_n$ \\
+\newline
+and similarly, \\
+\newline
+Convergence of $\sum x_n \implies $ convergence of $\sum (r \slash 2)y_n$. \\
+\newline
+Since $r$ is fixed, the conclusion follows. \\
+\newline
+(2) We just need $y_n \geq x_n \geq 0$ for $n \geq K \in \N$, then we use T156(a). Since $r=0$,
+$\exists K \in \N$ such that for each $n \geq K$,
+$x_n \slash y_n<|x_n \slash y_n|<1 \implies y_n \geq x_n \geq 0$.
+\subsubsection*{Application:}
+\subsection{Theorem 159:}
+Absolute convergence implies convergence.
+\subsection{Theorem 160:}
+Limit comparison works with absolute convergence.
+\subsection{Theorem 161:}
+\subsubsection*{Abstract:}
+The root test.
+\subsubsection*{Statement:}
+(a) Suppose $r<1$ and $\exists K \in \N$ such that $\forall n \geq K$, Then $$
+|x_n|^{1 \slash n} \leq r \implies \sum x_n \text{ converges absolutely.}
+$$
+(b) Suppose $|x_n|^{1 \slash n} \geq 1$ for $n \geq K \in \N$. Then $\sum x_n$ diverges.
+\subsubsection*{Proof:}
+Geometric series + comparison test and n'th term test for part (b).
+\subsubsection*{Application:}
+
+\subsection{Corollary 162:}
+\subsubsection*{Abstract:}
+The more typical formulation of the root test.
+\subsubsection*{Statement:}
+Suppose $r = \lim_{n \to \infty}|x_n|^{1 \slash n} \in \R$. Then
+for strict $r<1, \sum x_n$ converges absolutely and it diverges for $r>1$.
+\subsubsection*{Proof:}
+Choose $s \in (r,1)$. Then $1>s>r$ and $s-r > 0$. So we can choose $N \in \N$
+such that for each $n \geq N$, $||x_n|^{1 \slash n} - r| < \eps = r-s \implies 1 > s \geq |x_n|^{1 \slash n} $, so the result
+follows from T161. \\
+\newline
+Choose $s \in (1,r)$. Then $r>s>1$ and $r-s > 0$. So we can choose $N \in \N$
+such that for each $n \geq N$, $r-|x_n|^{1 \slash n} < r-s \implies |x_n|^{1 \slash n} \geq s > 1$, so the result
+follows from T161.
+\subsubsection*{Application:}
+Let $X = \sum (\frac{3n^2-9}{7n^2+4})^n$. Then
+$\lim_{n \to \infty}|x_n|^{1 \slash n} = \lim_{n \to \infty}\frac{3n^2-9}{7n^2+4} = 3 \slash 7$
+so $X$ converges absolutely.
+\subsection{Theorem 163:}
+\subsubsection*{Abstract:}
+The ratio test.
+\subsubsection*{Statement:}
+Suppose $(x_n) \neq 0$.  \\
+\newline
+(a): If $\exists K \in \N$ and $1>r>0$ such that $\forall n \geq K$, $$
+\left| \frac{x_{n+1}}{x_n} \right| \leq r,
+$$
+then $\sum x_n$ converges absolutely. \\
+\newline
+(b): If $\exists K \in \N$ such that $\forall n \geq K$, $$
+\left| \frac{x_{n+1}}{x_n} \right| \geq 1,
+$$
+then $\sum x_n$ diverges.
+\subsubsection*{Proof:}
+By induction, $|x_K|r^m \geq |x_{K+m}|$ (use the fact that $|\frac{x_{K+m+1}}{x_{K+m}}| \leq r < 1$).
+Since $|x_K|$ is fixed, for $n \geq K$ the terms in $\sum |x_n|$ are less than or equal to
+those of a geometric series with $1>r>0$, which converges. So the comparison test implies that
+$\sum |x_n|$ converges. Then terms are positive so if the ratio is greater than or equal to 1 then
+by induction the terms stay at the same or get larger
+for any $n$ and so n'th term test implies divergence.
+\subsubsection*{Application:}
+Let $X = \sum 2^n \slash n!$ then $|x_{n+1} \slash x_n| = 2 \slash (n+1) \leq 1$ for any $n \geq 1$.
+So $X$ converges absolutely.
+\subsection{Corollary 164:}
+Suppose $(x_n) \neq 0$ and $$
+\lim_{n \to \infty} \left| \frac{x_n+1}{x_n} \right| = r.
+$$
+Then we have absolute convergence if $r<1$ and divergence if $r>1$ for $\sum x_n$.
+\subsubsection*{Proof:}
+Similar to using 161 to prove 162, note you need $r>s>0$ rather than just $r>1$
+this time.
+\subsubsection*{Application:}
+\subsection{Theorem 165:}
+\subsubsection*{Abstract:}
+The integral test.
+\subsubsection*{Statement:}
+Let $f$ be (cts?) positive and decreasing as well as riemann integrable on $[1, \infty)$.
+Then $\sum f(k)$ converges $\iff$ $$
+\int_1^{\infty}f(t)dt = \lim_{b \to \infty} \int_1^b f(t)dt \,\, \in \,\, \R.
+$$
+If so, then the partial sum $s_n \vcentcolon= \sum_{k=1}^nf(k)$ and $s \vcentcolon= \sum_{k=1}^{\infty}f(k)$ satisfy
+$$
+\int_{n}^{\infty}f(t)dt \geq s- s_n \geq \int_{n+1}^{\infty}f(t)dt.
+$$
+\subsubsection*{Proof:}
+Let $k \in \N:k \geq 2$. Since $f$ is positive and decreasing on $[k-1,k]$,
+$$f(k) \leq \int_{k-1}^{k}f(t)dt \leq f(k-1).$$
+So we add $k=2,k=...n$ to obtain
+$$
+s_n - f(1) \leq \int_{1}^nf(t)dt \leq s_{n-1}
+$$
+so similarly to the limit comparison test proof, both or neither of $(s_n)$
+and $(\int_1^n f(t)dt)$ converge. So first bit is done, now add $k+1,...,m$ to first equation: $$
+s_m-s_n \leq \int_{n+1}^m f(t)dt \leq s_{m-1}-s_{n-1},
+$$
+so as $m \to \infty$ we get to the bit I cant be bothered to write.
+\subsubsection*{Application:}
+
+\subsection{Theorem 165:}
+\subsubsection*{Abstract:}
+Alternating series test.
+\subsubsection*{Statement:}
+Let $(z_n)>0$ be a decreasing sequence with $\lim_{n \to \infty}z_n = 0$. Then
+the alternating series $\sum (-1)^{n+1}z_n$ converges.
+\subsubsection*{Proof:}
+The subsequence of partial sums $(s_{2n})$ is nondecreasing and
+$z_1 \geq s_{2n}$ for all $n \in \N$, the monotone convergence theorem implies that
+$(s_{2n})$ converges to some limit $L$, i.e. every even index partial sum is eventually small. Then $\exists$ some convenient number
+$C \in \N$ such that $\forall n \geq C$, both $|s_{2n}-L|< \eps$ and $|z_{2n+1}|< \eps$. So $$
+2 \eps > |s_{2n}-L| + |z_{2n+1}| \geq |s_{2n}+z_{2n+1}-L| = |s_{2n+1}-L|
+$$
+so the odd index partial sums are eventually small too and so every partial
+sum is eventually small by exhaustion.
+\subsubsection*{Application:}
+\section*{Chapter 8}
+\subsection{Theorem 171:}
+Theorem 111 works for series, if a series of continuous functions $\sum f_n$
+converges uniformly to $f$ on $D \subseteq \R$, then $f$ is continuous.
+\subsection{Theorem 172:}
+Theorem 150 works for series. If: \begin{gather}
+f_n \in R[a,b] \impliedby \text{ cts on $[a,b]$} \\
+\sum f_n \to f \text{ uniformly }
+\end{gather}
+Then $f \in R[a,b]$ and $$
+\sum_{n=1}^{\infty} \inti f_n = \inti f.
+$$
+\subsection{Theorem 173:}
+Theorem 151 works for series. If: \begin{gather}
+\sum f_n \to f \text{ pointwise on } [a,b] \\
+\sum f'_n \to g \text{ uniformly on } [a,b] \\
+f'_n \text{ are cts on } [a,b]
+\end{gather}
+Then $f_n \to f$ uniformly on $[a,b]$ and $f$ is diff on $[a,b]$ with $f' = g = \sum f'_n$.
+\subsection{Theorem 174:}
+Cauchy's Criterion. The series $\sum f_n$ is uniformly convergent on $D \subseteq \R \iff$ \\
+\newline
+$\forall \eps >0,\,\, \exists M(\eps) \in \N:\,\, \forall m>n>M$, $$
+|f_{n+1}(x)+...+f_{m}(x)|< \eps \quad \forall x \in D.
+$$
+\subsection{Theorem 175:}
+\subsubsection*{Abstract:}
+The Weierstrass M-test.
+\subsubsection*{Statement:}
+Let $(M_n)$ be a sequence of real positive number such that $M_n \geq \sup_D |f_n(x)|$ for each $n \in \N$.
+Then if $\sum M_n$ converges, $\sum f_n$ converges uniformly on $D$.
+\subsubsection*{Proof:}
+Since $(M_n)$ converges, theorem 153 implies that $\exists M \in \N: \forall m>n \geq M$,
+$$
+\eps > |M_{n+1}+...+M_{m}| = M_{n+1}+...+M_{m} \geq \sup_D |f_{n+1}(x)|+...+ \sup_D |f_{m}(x)|
+$$
+$$
+\geq |f_{n+1}(x)+...+f_{m}(x)|, \text{ so taking supremum over $D$,} \eps > \sup_D |f_{n+1}(x)+...+f_{m}(x)|.
+$$
+\subsubsection*{Application:}
+\subsection{Theorem 178:}
+\subsubsection*{Abstract:}
+The Cauchy-Hadamard theorem.
+\subsubsection*{Statement:}
+If $R$ is the radius of convergence of $\sum a_n x^n$ then the series
+is absolutely convergent if $|x|<R$ and divergent if $|x|>R$.
+\subsubsection*{Proof:}
+Suppose $\infty > R > 0$.
+Let $1 \slash R = \limsup |a_n|^{1 \slash n}$ and choose $r:R>r>|x|$.
+By property one of limsup: \\
+\newline
+If $L > \limsup_{n \to \infty}b_n$
+Then $\exists N \in \N$ such that for each $n \geq N$, $b_n < L$. \\
+\newline
+Since $1 \slash r > 1 \slash R$, we have that $\exists N \in N: \forall n \geq N, 1 \slash r > |a_n|^{1 \slash n}$. \\
+\newline
+So the sequence $(|a_n|\times r^n)_{n \in \N}$ is bounded above by $\max \{\text{terms before $N$},1 \}$
+and bounded below by zero, so it is bounded.
+Hence $\exists M \in \R:\forall n \in \N, M \geq |a_n|r^n \implies Mr^{-n} \geq |a_n|$.
+Since $|x| \slash r < 1$, the series $\sum M (|x| \slash r)^n$ converges as a geometric series with common ratio
+less than one. Hence $\sum |a_n||x_n|^n$ converges by the comparison test, so we have demonstrated absolute convergence. \\
+\newline \\
+Suppose for contradiction that $|x|>R$ and $\sum a_n x^n$ converges.
+Then by the n'th term test, $\lim a_n x^n = 0 \implies |a_n x^n| \to 0$. But by the properties of limsup,
+$\exists$ infinitely many $n \in \N: |x|^n|a_n|>1$, contradiction.
+\subsubsection*{Application:}
+
+\end{document}
