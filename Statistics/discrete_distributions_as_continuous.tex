@@ -1,0 +1,299 @@
+%\begin{center}
+%\includegraphics[scale=0.05, angle=-90]{figboga/remark.JPG}
+%\end{center}
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{amsfonts}
+\usepackage{listings}
+\usepackage{color}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  escapechar=\%,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{black},
+  keywordstyle=\color{black},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{black},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+\usepackage{ mathrsfs }
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\DeclareMathOperator\dom{dom}
+\DeclareMathOperator\vphi{\varphi}
+\DeclareMathOperator\eps{\epsilon}
+\DeclareMathOperator\del{\delta}
+\DeclareMathOperator\Del{\Delta}
+\DeclareMathOperator\lm{\lambda}
+\DeclareMathOperator\deq{\vcentcolon=}
+\DeclareMathOperator\R{\mathbb{R}}
+\DeclareMathOperator\pr{\mathbb{P}}
+\DeclareMathOperator\Z{\mathbb{Z}}
+\DeclareMathOperator\N{\mathbb{N}}
+\DeclareMathOperator\F{\mathbb{F}}
+\DeclareMathOperator\A{\mathbb{A}}
+\DeclareMathOperator\HH{\mathbb{H}}
+\DeclareMathOperator\minn{\text{Minimise} \quad }
+\DeclareMathOperator\maxx{\text{Maximise} \quad }
+\DeclareMathOperator\st{\text{Subject to} \quad }
+\DeclareMathOperator\nc{\text{no constraints}}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclareMathOperator\bx{\bold{x}}
+\DeclareMathOperator\bs{\bold{s}}
+\DeclareMathOperator\id{\text{Id}}
+\DeclareMathOperator\bb{\bold{b}}
+\DeclareMathOperator\bA{\bold{A}}
+\DeclareMathOperator\bp{\bold{p}}
+\DeclareMathOperator\bc{\bold{c}}
+\DeclareMathOperator\C{\mathbb{C}}
+\DeclareMathOperator\ran{ran}
+\DeclareMathOperator\img{Im}
+\DeclareMathOperator\op{\oplus}
+\DeclareMathOperator\ot{\otimes}
+\DeclareMathOperator\diam{diam}
+\DeclareMathOperator\ite{int}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator\cd{card}
+\DeclareMathOperator\la{\langle}
+\DeclareMathOperator\ra{\rangle}
+\DeclareMathOperator\erf{erf}
+\DeclareMathOperator\erfc{erfc}
+\DeclareMathOperator{\sgn}{sgn}
+
+
+\newcommand{\quo}{/ _\sim}
+\newcommand{\pa}{\partial}
+\newcommand{\lb}{\left}
+\newcommand{\rb}{\right}
+\newcommand{\aps}{\alpha_S}
+\newcommand{\apl}{\alpha_L}
+\newcommand{\tdd}{\frac{d^2T}{dx^2}}
+\newcommand{\dx}{\frac{d}{dx}}
+\newcommand{\seq}{(x_n)_{n \geq 1}}
+\newcommand{\sseq}{(x_{n_k})_{k \geq 1}}
+\newcommand{\fseq}{(f_n)_{n \geq 1}}
+\newcommand{\elll}{\ell^{\infty}(\N)}
+\newcommand{\norm}{{\|.\|}}
+\newcommand{\inner}{\langle .,. \rangle}
+\newcommand*\dd{\, \mathop{}\!\mathrm{d}}
+\newcommand*\DD[1]{\, \mathop{}\!\mathrm{d^#1}}
+\newcommand{\Ga}[1]{\frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{\left(#1\right)^2}{2\sigma^2}}}
+\usepackage{color}
+%\title{}
+\newcommand*\autoop{\left(}
+\newcommand*\autocp{\right)}
+\newcommand*\autoob{\left[}
+\newcommand*\autocb{\right]}
+\DeclareRobustCommand*\{{\ifmmode \left\lbrace \else \textbraceleft \fi }
+\DeclareRobustCommand*\}{\ifmmode \right\rbrace \else \textbraceright \fi }
+\AtBeginDocument {%
+   \mathcode`( 32768
+   \mathcode`) 32768
+   \mathcode`[ 32768
+   \mathcode`] 32768
+   \begingroup
+       \lccode`\~`(
+       \lowercase{%
+   \endgroup
+       \let~\autoop
+   }\begingroup
+       \lccode`\~`)
+       \lowercase{%
+   \endgroup
+       \let~\autocp
+   }\begingroup
+       \lccode`\~`[
+       \lowercase{%
+   \endgroup
+       \let~\autoob
+   }\begingroup
+       \lccode`\~`]
+       \lowercase{%
+   \endgroup
+       \let~\autocb
+   }}
+
+\delimiterfactor 1001
+
+\makeatletter
+% for amsmath "compatibility" (not sophisticated)
+% \usepackage{amsmath}
+\AtBeginDocument {%
+          \def\resetMathstrut@{%
+           \setbox\z@\hbox{\the\textfont\symoperators\char40}%
+           \ht\Mathstrutbox@\ht\z@ \dp\Mathstrutbox@\dp\z@}%
+}%
+\makeatother
+\author{Brendan Matthews}
+\title{Monty Carlo Book}
+\begin{document}
+\section{A FEW BASIC TERMS IN PROBABILITY AND STATISTICS}
+Covariance of two functions is the difference of expected value of product and product of expected values.
+Correlation is that over the geometric mean of their variances. The nth moment of a dist $\psi$ is $$
+E_{\phi}[x^n] = \int x^n \psi(x)dx.
+$$
+Jensens Inequality for convex functions is $$
+E_{\psi}[g(X)] \geq g(E_\psi[X])
+$$
+Holders inequality for any two r.v. $X,Y$, $p>1$ is $$
+E[XY] \leq \| X \|_p \|Y\|_{\frac{p}{p-1}} = \sqrt[p]{E(|X|^p)} \times \hdots
+$$
+Minkowski's Inequality is the triangle for $X,Y$ and $p \geq 1$.
+\section{Monte Carlo Simulations}
+Suppose for $x \in \R^n$ we need to calc $$
+v = E_{\psi(x)}(f(x)) = \int f(x) \psi(x)dx^n.
+$$
+The Monte Carlo estimator is then $$
+\hat{v}_N = \frac{1}{N} \sum^N f(x_i).
+$$
+\subsection{Monte Carlo Supremacy}
+\begin{center}
+\includegraphics[scale=0.5]{myl4pic1.png}
+\includegraphics[scale=0.5]{myl4pic2.png}
+\includegraphics[scale=0.5]{myl4pic3.png}
+\end{center}
+\section{Common Distributions}
+\subsection{Uniform}
+We say that $X \sim \mathcal{U}[a,b]$ or $X \sim \mathcal{U}(a,b)$ with pdf $$
+\psi(x) = \frac{1}{b-a} \times \{x \in D(X)\},
+$$
+where curly brackets denote binary logical outcomes.
+\subsection{Normal}
+We say $X \sim \mathcal{N}(\mu,\sigma)$. The pdf is $$
+\psi(x; \mu,\sigma) = \Ga{x-\mu}.
+$$
+If $\mu = 0$ as is the case for the std normal dist, odd moments are zero by symmetry about origin.
+For the std normal we have the nice result for even moments using IBP on $x^m e^{-g(x^2)}$ as $x^{m-1}(xe^{-g(x^2)})$ we have
+$$
+E(X^{2k}) = \frac{2^k}{\sqrt{\pi}} \Gamma(k+0.5) = \frac{(2k-1)!}{2^{k-1}(k-1)!}.
+$$
+For the cdf, there holds $\erf(x) = 2N(x\sqrt{2})-1$.
+\subsection{Binomial}
+The probability of $k$ successes in $n$ trials is
+$$
+{n \choose k}p^k(1-p)^{n-k}
+$$
+and pdf for Binomial variate $X$ is $$
+\psi(x) = \sum_{k=0}^n {n \choose k} p^k(1-p)^{n-k}\del(x-k)
+$$
+where $\del$ is Dirac. The cdf is
+$$
+\int_{-\infty}^x \sum_{k=0}^n {n \choose k} p^k(1-p)^{n-k}\del(x-k)dx =  \sum_{k=0}^n {n \choose k} p^k(1-p)^{n-k} \int_{-\infty}^x \del(x-k)dx =  \sum_{k=0}^n {n \choose k} p^k(1-p)^{n-k}H(x-k)
+$$
+where $H$ is Heaviside.
+\subsection{Geometric}
+Number of Bernoulli trials until first failure. The pdf is $$
+\psi(y) = \sum^{\infty}_{\color{red}{k=1}} p^{k-1}(1-p) \del(y-k)
+$$
+and the cdf is Heaviside.
+\subsection{Poisson}
+If $\lm$ is the avg rate at which events occur, i.e. $dp = \lm dt$ then the number of events occuring in period $T$ has pdf
+$$
+\psi(y) = \sum_{k=0}^\infty \frac{(\lm T)^ke^{-\lm T}}{k!}\del(y-k) = \sum_{k=0}^\infty \frac{\lm^ke^{-\lm}}{k!}H(y-k)
+$$
+and the cdf is Heaviside.
+\subsection{Beta}
+Note that
+$$
+B_x(\alpha,\beta) = \int_0^x t^{\alpha-1} (1-t)^{\beta-1} dt
+$$
+is the incomplete beta function and the complete has $x=1$.
+With equal shape parameters, the beta
+distribution is symmetric, skewness is 0 and mode, mean, median are one half.
+The pdf is
+$$
+\frac{x^{\alpha-1} (1-x)^{\beta-1}}{B(\alpha,\beta)} = \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1} (1-x)^{\beta-1}
+$$
+and the cdf is $$
+\frac{B_x(\alpha,\beta)}{B(\alpha,\beta)}.
+$$
+We have
+\begin{center}
+\includegraphics[scale=0.5]{myl4pic4}
+\end{center}
+\subsection{Gamma}
+The incomplete Gamma function is $$
+\Gamma(z,x) = \int_x^\infty t^{z-1}e^{-t}dt \text{ and the gamma function is $\Gamma(z) = \Gamma(z,0).$}
+$$
+In the following, $\color{red}{x},\alpha,\beta \geq 0$.
+The pdf is $$
+\psi(x) = \frac{x^{\alpha-1}}{\Gamma(\alpha)\beta^\alpha}e^{-\frac{x}{\beta}}
+$$
+and integration by substitution gives  the cdf
+$$
+\frac{1}{\Gamma(\alpha)}\int_{-\infty}^{x \slash \beta} \beta \psi(\beta t)dt =
+\frac{1}{\Gamma(\alpha)}\int_{0}^{x \slash \beta} \beta \psi(\beta t)dt =
+$$
+$$
+\frac{1}{\Gamma(\alpha)}\int_{0}^{\infty} \beta \psi(\beta t)dt -
+\frac{1}{\Gamma(\alpha)}\int_{x \slash \beta}^\infty \beta \psi(\beta t)dt =
+1-\frac{\Gamma(\alpha, x \slash \beta)}{\Gamma(\alpha)}.
+$$
+Notice that the pdf is defined in such a way to cancel out $\Gamma(\alpha)$ at the lower limit of the cdf and $\Gamma(\alpha, \infty) = 0$.
+For $\alpha = n$ and $\beta = 1 \slash \lm$, the gamma dist is the amount of time for $n$ events to occur in a Poisson process.
+\subsection{Chi Square}
+This is the distribution of the sum of squares of indep std normal variates with $\nu$ terms (degrees of freedom). Its important
+in hypothesis testing for variance. It is a special case of the gamma distribution with $\alpha = \nu \slash 2$, $\beta =2$.
+\subsection{Students $t$}
+This distribution arises when we seek to test the difference of
+means when underlying variance is not known.
+When a standard normal variate
+$$
+Z = (\bar{X}_n - \mu) \frac{\sqrt{n}}{\sigma}
+$$
+has stdev replaced by bias corrected $s$,
+the students $t$ variate $$
+T = (\bar{X}_n - \mu) \frac{\sqrt{n}}{s}
+$$
+emerges. It happens that for $V = (n-1)\frac{s^2}{\sigma^2}$, a Chi-squared variate, $$
+T = \frac{Z}{\sqrt{V \slash \nu}}.
+$$
+Since the expectation of $V$ is $\nu$, $T$ approaches $Z$ in distribution as the sample size increases.
+\subsection{Standard Cauchy Distribution}
+This is a student's $t$ with one degree of freedom. The pdf is $$
+\frac{1}{\pi(1+x^2)}.
+$$
+Its symmetric about zero so odd moments are zero. Even moments don't exist. It is one of the few stable distributions with a probability density function that can be expressed analytically, the others being the normal distribution and the Lévy distribution.
+\subsection{Lognormal}
+Take the exponential of the product of a std normal variate with a parameter $\sigma$.
+The pdf is $$\frac{1}{x}\Ga{\ln(x)}$$ and the cdf is $$
+N(\frac{\ln(x)}{\sigma})
+$$
+where $N$ is the std normal cdf. In fact there can be the parameter $\mu$ added in the exponential but we set it to zero here. If it were present, the gaussian would feature $(\ln(x)-\mu)^2$. A log-normal process is the statistical realization of the multiplicative product of many independent random variables, each of which is positive. This is justified by considering the central limit theorem in
+the log domain. \\ \newline
+The lognormal distribution is probably the most important function in computational
+finance since it is the solution to the stochastic differential equation describing geometric
+Brownian motion. which in turn is almost always the first easy choice when the evolution
+of non-negative quantities is to be modelled.
+\subsection{Generalised Beta 2}
+The generalised beta distribution of the second kind
+is given by a four-parameter density function. One of the very useful features of the GB2 distribution is that it allows for a large variety
+of shapes that are nearly lognormal, which is desirable when density functions are used
+for the extrapolation of volatility smiles of traded options.
+\subsection{Pareto}
+The Pareto distribution is skewed and heavy-tailed. It is used to model rare events. The pdf is $$
+\frac{ab^a}{x^{a+1}}
+$$
+where $x \geq b, a > 0$. The moments are $$
+E(X^k) = \frac{ab^k}{a-k}
+$$
+for $a > k$.
+\end{document}
