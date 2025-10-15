@@ -1,0 +1,288 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\DeclareMathOperator\dom{dom}
+\DeclareMathOperator\eps{\epsilon}
+\DeclareMathOperator\del{\delta}
+\DeclareMathOperator\Del{\Delta}
+\DeclareMathOperator\R{\mathbb{R}}
+\DeclareMathOperator\N{\mathbb{N}}
+\DeclareMathOperator\ran{ran}
+
+\DeclareMathOperator\Fs{F_{\sigma}}
+\DeclareMathOperator\Gd{G_{\delta}}
+
+\DeclareMathOperator\inti{\int_{a}^{b}}
+
+\AtBeginEnvironment{align}{\setcounter{equation}{0}}
+\AtBeginEnvironment{gather}{\setcounter{equation}{0}}
+\title{Counterexamples in Topology}
+\begin{document}
+\maketitle{}
+\newpage{}
+\section{Chapters 1 \& 2}
+\subsection{Theory we found gold again}
+\subsubsection{Axioms}
+Let $T = (X, \tau)$ where $X$ is a set and $\tau$
+is a collection of subsets of $X$; we call these subsets open sets. The collection
+$\tau$ is said to be a topology for the set $X$ given that members of $\tau$ satisfy the axioms:
+\begin{align*}
+O_1: & \text{ The finite or infinite union of open sets is open} \\
+O_2: & \text{ Let $A_1,\hdots,A_n$ be a
+ collection of open sets in $\tau$ where $n \in \N$.
+  Then their intersection $\bigcap_{i=1}^n A_i$ is also open} \\
+O_3: & \text{ The sets $X$ and $\emptyset$ are open.}
+\end{align*}
+We define a set to be closed if its complement is an open set in $\tau$.
+So by De Morgan's laws, we can swap intersections with unions to obtain
+similar conditions for closed sets:
+\begin{align*}
+C_1: & \text{ The finite or infinite intersection of closed sets is closed} \\
+C_2: & \text{ Let $A_1,\hdots,A_n$ be a
+ collection of closed sets where $n \in \N$.
+  Then their union $\bigcup_{i=1}^n A_i$ is also closed} \\
+C_3: & \text{ The sets $X$ and $\emptyset$ are closed.}
+\end{align*}
+\subsubsection{Coarser, Weaker or Smaller}
+We say $\tau_1$ is coaser than $\tau_2$ if all members of $\tau_1$ are in $\tau_2$
+We say that $\tau_1 \leq \tau_2$ or $\tau_1 \supseteq \tau_2$. The coarsest topology in the indiscrete topology
+and the finest topology is the discrete topology. The ordering $\leq$ only forms a partial ordering, not all topologies are comparable.
+\subsubsection{Other Types of Sets}
+An $\Fs$ set is a set equal to the countable union of closed sets. The complement of an $\Fs$ set is a
+$\Gd$ set. Closed sets need not be $\Gd$ but are trivially $\Fs$.
+% note that the intersection of a singleton is as expected. See proof wiki.
+Clopen sets are trivially both $\Gd$ and $\Fs$.
+\subsubsection{Neighbourhoods}
+% related to open sets
+A neighbourhood $N_A$ for a set $A$ is a subset of $X$ such that $$
+A \subset O_A \subset N_A.
+$$
+We call it an open neighbourhood if $N_A$ is also open.
+\subsubsection{Bases}
+\paragraph{Subbase \& Base}
+Any collection of subsets $\mathcal{S}$ can generate a topology for $X$ by taking all
+sets formed from the union of finite intersections $S, \emptyset$ and $X$. If the union of the collection $S$ is equal to
+the set $X$ and $$\forall s_1,s_2 \in \mathcal{S}, \,\, \forall a \in (s_1 \cap s_2)  \,\, \exists \,\,s_3 \in \mathcal{S}:a \in s_3 \subset (s_1 \cap s_2)$$
+then $\mathcal{S}$ is a base for $\tau$. In this case
+the topology can be generated more simply by taking all unions of members of
+$\mathcal{S}$ as open sets, since each finite intersection
+is equal to the union of some collection of open sets in $\mathcal{S}$
+which contain each of its points. If two (sub)bases generate the same topology
+they are equivalent.
+\paragraph{Local Basis}
+The neighbourhood basis $\tau$ for a point $x \in X$ is a collection of open neighbourhoods
+$$ \{ N(x):\forall \,\,O: x \in O \,\, \exists \,\, A \in N(x) : A \subset O \}$$
+%
+% this is a bit weird, N(x) is already a collection of sets.
+% by defn, x is in A
+%
+Suppose $(X,\tau)$ is a topological space.
+For any $Y \subset X$ we can generate a topology $\tau_Y$ by
+ defining open sets to be equal
+to the intersection of $Y$ and a member of $\tau$. The pair $(Y,\tau_Y)$ is called a
+subspace of $(X,\tau)$ and $\tau_Y$ is called the induced topology for $Y$. A set $U \subsetneq Y$
+has a property relative to $Y$, for example open relative to $Y$, if $U$ has the property in the subspace $(Y,\tau_Y)$.
+If this holds for any subspace, we say the property is hereditary. If this holds
+for closed subsets and their induced topology,
+we say the property is weakly hereditary. Compactness is one such weakly hereditary property.
+\subsubsection{Compactness}
+A space $X$ is compact if for each open cover, a collection of open subsets whose union contains $X$, there
+is a finite subcollection whose union also contains $X$. Suppose $X$ is compact and $\{O_\alpha\}$ is an open cover for a closed subset $Y$.
+Then the union of $X-Y$ (which is open by definition) and $\{O_\alpha\}$ covers $X$. Since $X$ is compact, there exists a finite \textcolor{red}{subcollection} of $\{X-Y, O_\alpha\}$ that also covers $X$.
+Either $X-Y$ is in the subcollection or it isn't.
+In any case, omitting it from the subcollection will give a new
+finite subcollection of $\{O_\alpha\}$ that covers $Y$ ($X-Y$ need not be in $\{O_\alpha\}$).
+So a closed subset of  a compact space is compact.
+A compact subset of a compact space need not be closed.
+
+\subsubsection{Limit Points}
+A limit point $p$ is a limit point of a set $A$
+if every open set containing $p$ also contains
+a different point from $A$. If that point is not required to be distinct from $p$,
+the point is called an adherent point.
+\paragraph{$\omega$-accumulation points}
+Are a special case of limit points where
+ every open set that contains $p$ must contain infinitely many points from $A$.
+\paragraph{Condensation points}
+Contain uncountably many points from $A$.
+\paragraph{Limit point of a sequence}
+A point $p_s$ is a limit point \textbf{for the sequence}
+ if every open set containing $p_s$ contains all but finitely many points of the sequence. Every limit
+ point of a sequence is also an accumulation point of that sequence, every open set containing $p_s$ contains infinitely many terms in the sequence.
+\paragraph{Set associated with a sequence}
+Limit points of a sequence need only be adherent points of the associated set of their elements, take the discrete topology
+with two points and a sequence of one point and the second point repeating.
+\paragraph{Distinct Sequences}
+Every accumulation point of a distinct sequence is an $\omega-$accumulation point of the associated set. Also, every sequence corresponding to a set with an $\omega-$accumulation point has that point
+as an accumulation point.
+
+\paragraph{Isolated Points \& Derived Sets}
+An isolated point is any point not in the derived set of $A$. Such points are
+isolated because they are contained in an open set with no other points of $A$. If a set
+has no isolated points it is said to be dense in itself. If it is also closed, it is perfect. By definition, closed
+sets contain all their limit points since the complement is open and has no points of the set.
+Suppose a set $A$ contains each of its limit points $x$.
+We claim the set is closed because the complement set $X-A$ is open.
+Since $x \in X-A$ is not a limit point of $A$, it must be that
+$$
+\exists O_x: \{x\} \subset O_x \subset X-A.
+$$
+Where $O_x$ is chosen to be an open set that contains $x$ but no points in $A$. By the
+open-set-neighbourhood equivalence, $X-A$ is open. So \textbf{a set is perfect iff it equals its derived set}.
+\subsubsection{Closures, Interiors, regular sets and connected sets}
+The closure of a set is the set in union with its limit points. Equivalently,
+the closure of a set $A$ is the smallest closed set $A^-:A \subset A^-$. Similarly,
+the interior of $A$ is the largest open set $A^\circ:A^\circ \subset A$. By definition, $A^{'-}$ is the smallest
+closed set containing $X-A$. We claim $ A^{'-'}$ is the largest open set in $A$, i.e. $A^\circ = A^{'-'}$.
+Suppose not. Then there must be some larger open set which is a subset of $A$. But then it's complement in $X$ must be a closed set
+containing $X-A$ that is smaller than $A^{'-}$. Contradiction. \\ \newline From the axioms, $A^\circ$ is the union of all open sets in $A$. The closure and complement
+operations admit at most fourteen different variant sets when applied to $A$.
+\newpage{}
+Notice the reversal in these relations:
+$$
+\bigcup_{i=1}^n A_i^- = \big( \bigcup_{i=1}^n A_i \big)^-, \quad \bigcup_{i=1}^\infty A_i^- \subset \big( \bigcup_{i=1}^\infty A_i \big)^- \quad \forall n \in \N.
+$$
+
+$$
+\big( \bigcap_{i=1}^n A_i \big)^\circ = \bigcap_{i=1}^n A_i^\circ, \quad \big( \bigcap_{i=1}^\infty A_i \big)^\circ \subset \bigcap_{i=1}^\infty A_i^\circ \quad \forall n \in \N.
+$$
+
+
+$$
+\big( \bigcup_{i=1}^n A_i \big)^e = \bigcap_{i=1}^n A_i^e, \quad \big( \bigcup_{i=1}^\infty A_i \big)^e \subset \bigcap_{i=1}^\infty A_i^e \quad \forall n \in \N.
+$$
+
+
+$$
+\bigcup_{i=1}^n A_i^e = \big( \bigcap_{i=1}^n A_i \big)^e, \quad \bigcup_{i=1}^\infty A_i^e \subset \big( \bigcap_{i=1}^\infty A_i \big)^e \quad \forall n \in \N.
+$$
+
+
+An open set is regular open if $A=A^{-\circ}$.
+Its complement is regular closed because it satisfies
+$(A^{'}) = (A^{'})^{\circ -}$. \textbf{Regular sets} don't obey all the rules for axiomatic sets.
+We only have the finite parts of the axioms: $$
+\bigcap_{i=1}^{n} {\bf O_i} \equiv {\bf O}, \quad \bigcup_{i=1}^n { \bf C_i} \equiv {\bf C}.
+$$
+We define the boundary of a set $A$:
+$$
+A^b \vcentcolon= \{a \in A: a \not \in A^\circ, \,\, a \in A^- \} = A^- - A^\circ = A^- \cap (X-A)^-.
+$$
+A set is closed iff the boundary is a subset, a set is open iff it is disjoint from its boundary and
+a set is clopen iff the boundary is empty. The boundary itself is closed as the intersection of two closed closures. In general, $A^{bb} \subset A^b$. For example,
+take trivial topology on $\{1,2,3,4\}$, $A=\{1,2\}$. We have $$
+A^- = X = (X-A)^- = A^- \cap (X-A)^- = A^b = A^{b-}, \quad A^{b-} \cap (X-A^{b})^- = A^{bb} = X \cap \emptyset^- = X \cap \emptyset = \emptyset.
+$$
+We define the exterior of a set $A$:
+$$
+A^e \vcentcolon= A^{'\circ} = A^{-'}.
+$$
+We have $$
+A^\circ \subset A^{ee}.
+$$
+Two sets $A,B$ are separated if $$
+A^- \cap B = B^- \cap A = \emptyset.
+$$
+A set $A$ is connected if it is not the union of any two separated sets in $X$.
+\subsubsection{}
+
+
+\subsubsection{}
+
+
+\subsubsection{}
+
+\subsubsection{}
+
+\subsubsection{}
+\subsection{Examples}
+\subsubsection{Discrete \& Indiscrete Topologies}
+\paragraph{Discrete Topology}
+The discrete topology on $X$ is defined by taking all subsets of $X$ to be
+open and hence, since their complements in $X$ are in $X$, closed.
+The discrete topology will be categorised by one of the following:
+\begin{gather}
+\text{If $X$ is finite,
+we call it a finite discrete topology} \\
+\text{If $X$ is countably infinite,
+we call it a countable discrete topology} \\
+\text{If $X$ is uncountably infinite,
+we call it an uncountable discrete topology.}
+\end{gather}
+\paragraph{Indiscrete Topology}
+The trivial topology takes the only open sets to be $\emptyset$ and $X$. All subsets other than
+$X$ or $\emptyset$ are trivially neither open nor closed.
+\subsubsection{Particular \& Excluded Point Topologies}
+We generate this topology by defining open sets to be equal to $\emptyset$ or subsets of $X$ that contain some $p \in X$.
+Suppose we have another topology generated by defining open sets to be those sets different from $X$ that do not contain $p$. Then clearly the two topologies are not comparable
+since the collections do not share any members other than $X$ and $\emptyset$ and both have additional members since $X$ has at least two elements by definition.
+\subsubsection{Cofinite Topology}
+The cofinite topology on any set $X$ is the collection $$
+\tau = \{ A \subset X : A = \emptyset \text{ or } X \backslash A \text{ is finite} \}.
+$$
+It follows that all closed subsets are finite sets or the entire set $X$. Suppose $X$ is
+uncountable. Then since the complement of any $A \in \tau$ in $X$ is finite, we must have that $A$
+is uncountable. This implies that there exist sets that are open but not $\Fs$. The complement of an open set is closed
+by definition and so there exist closed sets that are not $\Gd$, since the complement of a $\Gd$ set must be $\Fs$.
+\subsubsection{A set is open iff it is a neighbourhood of each point}
+Suppose that a set $A \subset X$ is a neighbourhood for each of its points. Then
+$\forall a \in A$,
+$$
+\{ a \} \subset O_a \subset A.
+$$
+So $A$ is the union of a collection of open sets and by $O_1$ the set $A$ is open. The converse follows from the definition.
+\paragraph{Example}
+In particular for $\R^n$ under the usual topology we have that
+a set $\Omega \subset \R^n$ is open iff for each $x \in \Omega,$
+$$
+\exists S(x,r),r>0:S(x,r) = \{y \in \R^n: |x-y|<r \} \subset \Omega.
+$$
+
+\subsubsection{Equivalent Bases}
+% X = {1,2,3} B1 = {1,2}, {2,3}, {1,3} and B2 = {1}, {2}, {3}.
+\subsubsection{Compact Subsets need not be closed}
+In the trivial topology, all subsets are compact but only $X$ and $\emptyset$ are closed. Suppose $(Y,\tau_Y)$ is
+an infinite subspace of the cofinite topology and $\{U_\alpha\}$ is an open cover for $Y$. Then any $A \in \{U_\alpha\}$ is open and hence
+has a finite complement in $Y$. So the collection $\{A_1,\hdots,A_n,A \}$ where $A_1,\hdots, A_n$ are open sets from $\{U_\alpha\}$ that contain each point is a finite subcollection that covers $Y$.
+So every subspace of a cofinite topological space is compact (proof if $Y$ is finite is trivial). Since closed sets are finite in the cofinite topology, $Y$ isn't closed.
+
+\subsubsection{Limit Points}
+\paragraph{A sequence can have uncountably many limit points $p_s$:}
+Any sequence in a trivial topology.
+\paragraph{Accumulation points of a sequence need not be limit points of the sequence \& limit points of a set need not be limit points of a sequence}
+Consider $[-1,1]$ with open sets $(a,b):a<0,b>0$. This is called the overlapping interval topology.
+Zero is an accumulation point of the sequence $0,0.5,0,0.5\hdots$ but not a limit point of that sequence.
+The point $0.25$ is a limit point of $[-1,1]$ but not a limit point of the sequence.
+
+\subsubsection{Closures \& Interiors}
+\paragraph{A set in union with $\omega-$accumulation points or condensation points need not be closed}
+Try the trivial topology with a finite subset.r
+
+\paragraph{Interior is contained in the double exterior}
+The right half-open interval topology on $\R$ is defined by taking open sets of the form $[a,b)$.
+The following results are trivial:
+\begin{gather*}
+(-\infty, a) \equiv C \iff [a, \infty) \equiv O \\
+[a, \infty) \equiv C \iff (-\infty,a) \equiv O \\
+\implies (-\infty, a) \equiv CO, \quad [b, \infty) \equiv CO \\
+\implies [a,b) \equiv CO.
+\end{gather*}
+From the axioms we find that
+\begin{gather*}
+(a,b) = \bigcup_{n=1}^\infty [a+1/n,b+1/n) \equiv O \\
+(a,\infty) = \bigcup_{n=1}^\infty (a,a+n) \equiv O.
+\end{gather*}
+Take the set $(3,4)$.
+We have $(3,4)^{\circ} = (3,4)$, ${(3,4)}^{-} = [3,4) \implies {(3,4)}^{e} = {[3,4)}^{'}$.
+But $[3,4)^{'} = [3,4)^{'-} \implies (3,4)^{ee} = [3,4)^{''} = [3,4)$. Hence $(3,4)^\circ \subsetneq (3,4)^{ee}$.
+
+
+
+\end{document}
