@@ -1,0 +1,206 @@
+%\begin{center}
+%\includegraphics[scale=0.05, angle=-90]{figboga/remark.JPG}
+%\end{center}
+\documentclass{article}
+\usepackage{listings}
+\usepackage{color}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\DeclareMathOperator\dom{dom}
+\DeclareMathOperator\eps{\epsilon}
+\DeclareMathOperator\del{\delta}
+\DeclareMathOperator\Del{\Delta}
+\DeclareMathOperator\deq{\vcentcolon=}
+\DeclareMathOperator\R{\mathbb{R}}
+\DeclareMathOperator\N{\mathbb{N}}
+\DeclareMathOperator\minn{\text{Minimise} \quad }
+\DeclareMathOperator\maxx{\text{Maximise} \quad }
+\DeclareMathOperator\st{\text{Subject to} \quad }
+\DeclareMathOperator\nc{\text{no constraints}}
+\DeclareMathOperator\bx{\bold{x}}
+\DeclareMathOperator\bs{\bold{s}}
+\DeclareMathOperator\bb{\bold{b}}
+\DeclareMathOperator\bA{\bold{A}}
+\DeclareMathOperator\bp{\bold{p}}
+\DeclareMathOperator\bc{\bold{c}}
+\DeclareMathOperator\C{\mathbb{C}}
+\DeclareMathOperator\ran{ran}
+
+\DeclareMathOperator\pa{\partial}
+\DeclareMathOperator\pt{\frac{\partial u}{\partial t}}
+
+% easier syntax using this
+
+\newcommand*{\pu}[2]{\frac{\partial^{#2} u}{\partial #1^{#2}}}
+
+\newcommand*{\pmix}[4]{\frac{\partial^{\the\numexpr #3 + #4 \relax} u}{\partial #1^{#3} \partial #2^{#4}}}
+\newcommand*\dx{\, \mathop{}\!\mathrm{d}x}
+
+\DeclareMathOperator\inti{\int_{a}^{b}}
+
+\AtBeginEnvironment{align}{\setcounter{equation}{0}}
+\AtBeginEnvironment{gather}{\setcounter{equation}{0}}
+\title{Combinatorics}
+
+
+\begin{document}
+\section{Basic Tools}
+\subsection{THE SUM AND PRODUCT RULES}
+\subsubsection*{There are 15 married couples in a party. Find the number of ways of choosing a woman and a man
+from the party such that the two are}
+\paragraph*{(a) married to each other}
+There are 15 couples and so there are 15 ways.
+\paragraph*{(b) not married to each other.}
+For any particular woman, there are 14 men with which to form a couple that is not married.
+Since there are 15 women, there are 210 ways to do this by the product rule. Alternatively, there are 225 pairs that can be formed, and part (a) says that there are 15 with which the couples are married. The sum rule says there must be 210 ways of forming a non married couple, as the events cannot occur simultaneously.
+\subsubsection*{Find the number of}
+\paragraph*{(a) 2-digit even numbers}
+There are 9 choices for the first digit. There are 5 choices for the second digit. Product rule says 45.
+\paragraph*{(b) 2-digit odd numbers}
+Sum rule says 45.
+\paragraph*{(c) 2-digit odd numbers with
+distinct digits}
+Pick the second digit first. 5 choices. Then pick the first digit, 8 choices. So 40.
+\paragraph*{(d) 2-digit even numbers with distinct digits.}
+First, work out how many 2 digit nums with distinct. There are 9 ways to choose the first digit, can't choose 0. We can choose 0 for the second digit, so 9 ways again. Total 81. So sum rule says there must be 41.
+
+
+\subsection{PERMUTATIONS
+AND COMBINATIONS}
+\subsubsection*{Pascal's Rule}
+We claim that $C(m,n) = C(m-1,n)+C(m-1,n-1)$.
+\begin{proof}
+Let $X = \{x_1,\hdots,x_m\}$ be a set with $m$ elements.
+We wish to determine the number subsets of $X$ with $n$ elements.
+Consider the sub-collection of such subsets that
+do not contain the $m$th element of $X$,
+these subsets are obtained via choosing any $n$ elements
+from the remaining $m-1$ elements of $X$. Now consider the sub-collection
+of $n$-length subsets of $X$
+that do contain the $m$th element of $X$.
+Such subsets are obtained by choosing $n-1$ elements from
+the remaining $m-1$ elements of $X$.
+\end{proof}
+\section{Further Tools}
+\subsection{Generalised perms and coms}
+$X$ isnt a set but its a bucket of stuff with $n$ objects in it.
+Any ordering of $r \leq n$ objects in $X$ is a generalised $r$ perm of $X$ or just a perm if $r = n$.
+\subsubsection*{Defn}
+Suppose that $\sum_k n_i = r \leq n$.  Then
+$$
+p(n; n_1 \hdots,n_k) =  \frac{p(n,r)}{n_1! \hdots n_k!} = p(n; n_1 \hdots,n_k, n-r) = \text{Easier to calc}.
+$$
+Notice that numerator changes to $P(n,n)$ if we add $n-r$ to the chain
+and $P(n,r) = P(n,n) \slash (n-r)!$. This is the number of generalised r-permutations of a bucket of size $n$ with object categories such that $n = \sum_k n_i$.\\
+\newline Suppose instead that $X$ is an actual set and $S \subset X$ with $|S| = r \leq n$.
+Then an ordered partition of $S$ is a generalised r-combo of $X$ or a generalised combo if $r = n$.
+The number of r-combos is the same as the number of r-perms:
+$$C(n;n_1,\hdots,n_k) = C(n,n_1) \hdots C \left(n - \sum_{k-1} n_i,n_k \right) = \frac{n!}{n_1!\color{red}{(n-n_1)!}} \frac{\color{red}{(n-n_1)!}}{n_2!\color{blue}{(n-n_1-n_2)!}} \hdots \frac{\color{red}{\color{blue}{\left(n-\sum_{k-1} n_i \right)!}}}{n_k!(n-r)!}$$
+For unordered partitions into $p_i$ subsets of cardinality $n_i$,
+divide $C(n;)$ by the chain $p_i!$, yielding $
+\frac{n!}{\prod_k p_i(n_i)^{p_i}}.
+$
+\subsection{Sequences and selections}
+We call a sampling with replacement $r$ times (need not have $r \leq n$) an r-sequence of $X$, of which there are $n^r$. An r-selection is an r-sequence without care for the order.
+There are $n^r \slash r! = C(r+n-1,n-1)$ such selections.
+\subsection{Inclusion exclusion principle}
+$$
+|A \cup B| = |A| + |B| - |A \cap B|
+$$
+and if $X$ is a superset,
+$$
+|A' \cap B'| = |(A \cup B)'| = |X| + |A \cap B| - |A| - |B|.
+$$
+\subsubsection{Sieve Theorem}
+Let $A_1,\hdots,A_m$ be subsets of a finite set $X$.
+Denote the cardinalities of the union of all the k-tuple intersection combinations of these subsets by
+$s_k$.
+Then $$
+|\bigcap A_i'| = |X|-s_1+s_2+\hdots+(-1)^ms_m
+$$
+\begin{proof}
+Pick any $x \in X$. We claim that $x$ is counted the same on the LHS as on the right.
+First suppose $x$ is not in any of the subsets. Both sides count $x$ once. Now suppose
+$x$ is in $r \geq 1$ of the subsets, labelled $A_1,\hdots,A_r$.
+By abuse of notation, $s_k$ now denotes the number of times $x$ is counted from the terms on the RHS.
+We have $s_k = C(r,k)$ for each $k=1,\hdots, r$. We will define $s_0$ to be one (the count of $x$ from $|X|$)
+The binomial theorem says $$
+(1+x)^r = \sum_{k=0}^r C(r,k)x^k \implies (1-1)^r = \sum_{k=0}^r (-1)^k s_k
+$$
+so that the count on the RHS is zero. Since $r \geq 1$, there exists $A_i$ with $x \in A_i$ so that the count on the LHS is zero too.
+\end{proof}
+\subsubsection{Corollary}
+The cardinality of the union of subsets is the alternating sum of the cardinality of their intersection combos.
+\subsection{Systems of Distinct Representatives (not unique)}
+Given $N$ sets, duplicates allowed, the family of sets has an SDR if we can sample one element from each set in the family such that
+the samples are distinct. A necessary condition called the
+\textbf{marriage condtion} is that the union of each subfamily of $k$
+sets has $k$ elements \textbf{or more}. This is also sufficient:
+\subsubsection{Phillip Hall's Marriage Theorem}
+\begin{proof}
+Suppose a family of $N$ sets $A_1, \hdots, A_N$ satisfies the marriage condition.
+By discarding elements from the sets
+that aren't needed for the marriage condition to hold,
+form the minimal possible sets into a collection $F = \{ a_1, \hdots, a_N \}$.
+By construction, if such a set $a_1$ in the collection
+had two elements $x$ and $y$ then there exist $P,Q \subset \{2,\hdots, N\}$ such that for
+$$
+X = (a_1 - x) \cup \bigcup_{p \in P} a_p, \quad \quad Y = (a_1 - y) \cup \bigcup_{q \in Q} a_q
+$$
+we have $|X| \leq |P|$ and $|Y| \leq |Q|$ since otherwise $a_1$ wouldn't be minimal.
+Then $|X|+|Y| \leq |P|+|Q|$.
+But $|X|+|Y| = |X \cup Y| + |X \cap Y| \geq (1 + |P \cup Q|) + |P \cap Q| > |P| + |Q|$
+by the marriage condition. So there are fewer than two elements in $a_1$.
+There must be exactly one, since the marriage condition on $\{a_1\}$ demands it.
+The marriage condition on $\{a_1,\hdots,a_N\}$ then establishes the distinct
+elements required from each set. If they weren't distinct, there wouldn't be $N$
+elements in the family.
+\end{proof}
+\section{Generating functions \& recursive relations}
+\subsection{Ordinary and exponential gfs}
+The ordinary generating function of a sequence $(a_1,\hdots)$ is $$
+g(x) = a_0 + a_1 x + a_2 x^2 + \hdots
+$$
+and the exp generating function is $$
+G(x) = a_0 + a_1 x + a_2\frac{x^2}{2!} + \hdots
+$$
+Important ordinary gen example is the sequence $(C(n,0),\hdots,C(n,n))$ with generating function $(1+x)^n$. This is the same function as the exp gen of the permutations.
+\subsubsection{Theorem}
+Denote the sequence $(a_0,a_1-a_0,\hdots)$ by $(a_r - a_{r-1})$.
+Then the gen function is $(1-x)g(x)$. Likewise the exp gen function
+of $(a_r-ra_{r-1})$ is the same. For an infinite seq $(b_r)$ with gen function $B(x)$,
+the exp gen function of $(b_{r+1}-b_r)$ is $B'(x) - B(x)$.
+\subsection{partitions of a pos integer}
+\subsection{recurrence relations}
+\subsection{soln to linear rr's with constant coeffs}
+\section{Group theory}
+\subsection{burnside frobby theorem}
+\subsection{perm groups}
+\subsection{Polya's Enumeration Theorems}
+\end{document}
