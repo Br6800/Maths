@@ -99,7 +99,7 @@
 #let seq = $(x_n)_(n >= 1)$
 #let fseq = $(f_n)_(n >= 1)$
 #let Si(x) = math.op($1/(1+e^(-#x))$)
-#let inner(x,y) = math.op($lr(angle.l #x,#y angle.r)$)
+#let inner(x,y) = math.op($lr(chevron.l #x,#y chevron.r)$)
 #let Ga(x) = math.op($1 / sqrt(2 pi sigma^2) e^(-(#x)^2 / (2 sigma^2))$)
 #let Df(f, x) = math.op($(partial #f) / (partial #x)$)
 #let proj(x, y) = math.op($"Proj"_(#x)(#y)$)
@@ -321,9 +321,9 @@ $ f(x)-f(x_0) &= inner(x,A x) - inner(x_0, A x_0) \
 &= inner(x - x_0, A x_0) + inner(x - x_0, A (x - x_0)) + inner(x_0, A (x - x_0)) \
 &= inner(A x_0, x-x_0) + 0.5 inner(x-x_0, (A+A^top)(x-x_0)) + inner(A^top x_0, x - x_0) \
 &= inner((A+A^top)x_0,x-x_0) + 0.5 inner(x-x_0, (A+A^top)(x-x_0)) \
-"So "nb f(x) &= vec(Df(f,x_1)(x) \ dots.v \ Df(f,x_n)(x))  \ 
+"So "nb f(x) &= vec(Df(f,x_1)(x) , dots.v , Df(f,x_n)(x))  \ 
 &= lim_(h to 0) #h(0.1cm) 1/h #h(0.1cm) 
-vec(f(x_1+h,dots.h,x_n) - f(x_1,dots.h,x_n) \ dots.v \ f(x_1,dots.h,x_n+h) - f(x_1,dots.h,x_n)) \ 
+vec(f(x_1+h,dots.h,x_n) - f(x_1,dots.h,x_n) , dots.v , f(x_1,dots.h,x_n+h) - f(x_1,dots.h,x_n)) \ 
 &= lim_(h to 0) 1/h (A+A^top) h x + 1/(2h) vec(2 h^2 A_(11),dots.v,h^2 (A_(n 1)+A_(1n))) \
 &= (A+A^top)x $]
 == Solving Linear Regression Explicitly
@@ -511,7 +511,7 @@ A GLM consists of
 - a distribution from the exponential family,
 - a linear predictor
 $ eta(theta) 
-= vec(theta_1^top \ dots.v, theta_k^top) x in RR^k "with" eta_i = theta_i^top x "for" i=1, dots.h,k 
+= vec(theta_1^top , dots.v, theta_k^top) x in RR^k "with" eta_i = theta_i^top x "for" i=1, dots.h,k 
 "and" theta = (theta_1,dots.h,theta_k)^top in RR^(n k) "with" theta_i in RR^n. $
 - a link function $g$ such that $E(T(y)|x)= nb A(eta)$ provided $A neq 0$.
 - It is true that $"Var"(T(y);eta)= H(A)(eta)$ provided $A neq 0.$
