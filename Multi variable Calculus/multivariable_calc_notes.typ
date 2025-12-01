@@ -266,7 +266,7 @@ norm(h) &=norm(h-F^(-1)k+F^(-1)k) \
 &<= norm(F^(-1)) norm(F h-k)+norm(F^(-1))norm(k) "  N.B." F^(-1) "is bounded by bounded inverse theorem"\
 &<= c norm(F) norm(F^(-1)) norm(h)+norm(F^(-1))norm(k),
 $
-so $ norm(h) / norm(k) <= norm(F^(-1))/(1-c norm(F) norm(F^(-1))) "because we chose" c "in such a way the denominator on the RHS is positive". $
+so $ norm(h) / norm(k) <= norm(F^(-1))/(1-c norm(F) norm(F^(-1))) "because we choose" c "in such a way the denominator on the RHS is positive". $
 Then as desired,
 $
 norm(f^(-1)(b+k)-f^(-1)(b)-F^(-1) k)/norm(k) &= 
