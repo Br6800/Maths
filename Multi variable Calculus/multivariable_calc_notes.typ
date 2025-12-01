@@ -183,7 +183,7 @@ For $x in B(a,(1-c)r)$ it is hard to construct $lm$ such that $lm + g(lm) = x$. 
   and a point $a in A$ such that 
   $F = f'(a) in X^X$ is an invertible bounded linear operator. 
   Then $f$ is locally invertible at $a$, i.e. there are neighbourhoods $V_a$ and $W_(f(a))$ such that $f:V_a to W_(f(a))$ is a bijection.
-Furthermore, for $b = f(a)$ we have $(f^(-1))'(b) = F^(-1) in C^1$.
+Furthermore, for $b = f(a)$ we have $(f^(-1))'(b) = F^(-1) in C^0$.
 ]
 #proof()[
   Fix a point in an open set $a in A subset X$ and let $f:A to X$. 
