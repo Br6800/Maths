@@ -181,9 +181,9 @@ For $x in B(a,(1-c)r)$ it is hard to construct $lm$ such that $lm + g(lm) = x$. 
   Fix an open set $A subset X$, 
   a smooth function $f in X^A cap C^1$ 
   and a point $a in A$ such that 
-  $F = f'(a) in X^X$ is an invertible linear operator. 
+  $F = f'(a) in X^X$ is an invertible bounded linear operator. 
   Then $f$ is locally invertible at $a$, i.e. there are neighbourhoods $V_a$ and $W_(f(a))$ such that $f:V_a to W_(f(a))$ is a bijection.
-Furthermore, for $b = f(a)$ we have $(f^(-1))'(b) = F^(-1)$.
+Furthermore, for $b = f(a)$ we have $(f^(-1))'(b) = F^(-1) in C^1$.
 ]
 #proof()[
   Fix a point in an open set $a in A subset X$ and let $f:A to X$. 
@@ -193,7 +193,7 @@ $ dee(x) = a+[f'(a)]^(-1) circ (f(x)-f(a)) "N.B. Inverse is linear operator " X 
 so that $dee(a) = a$ and $dee'(a) = iota:X to X$ and let $g = dee - iota$. 
 Then $g$ is similar enough to $f$ that $g in C^1$. 
 Fix $c$ in the interval $ 
-lr((0,1/lr(lr(lr(||F^(-1)||)||)F||))) subset [0,1)$.
+lr((0,1 / lr(lr(lr(||F^(-1)||)||)F||))) subset [0,1)$.
 Since $g'$ is cts, there is some $r > 0$ such that $norm(g'(z)-g'(a))=norm(g'(z)) <= c$ for any $z in B(a,r)$. 
 Fix $x,y in B(a,r)$. Then
 $
