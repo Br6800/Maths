@@ -193,7 +193,7 @@ $ dee(x) = a+[f'(a)]^(-1) circ (f(x)-f(a)) "N.B. Inverse is linear operator " X 
 so that $dee(a) = a$ and $dee'(a) = iota:X to X$ and let $g = dee - iota$. 
 Then $g$ is similar enough to $f$ that $g in C^1$. 
 Fix $c$ in the interval $ 
-lr((0,lr(lr(lr(||F^(-1)||)||)F||))) subset [0,1)$.
+lr((0,1/lr(lr(lr(||F^(-1)||)||)F||))) subset [0,1)$.
 Since $g'$ is cts, there is some $r > 0$ such that $norm(g'(z)-g'(a))=norm(g'(z)) <= c$ for any $z in B(a,r)$. 
 Fix $x,y in B(a,r)$. Then
 $
