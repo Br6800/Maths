@@ -177,19 +177,23 @@ For $x in B(a,(1-c)r)$ it is hard to construct $lm$ such that $lm + g(lm) = x$. 
 ]
 #pagebreak()
 #theorem("Inverse Function Theorem")[
-  Fix an open set $A subset RR^n$, a continuously differentiable function $f:A to RR^n$ and a point $a in A$ such that $F = f'(a) in RR^(n times n)$ is invertible. Then $f$ is locally bijective at $a$, i.e. there are neighbourhoods $V_a$ and $W_(f(a))$ such that $f:V_a to W_(f(a))$ is a bijection; it is locally invertible.
-
-Furthermore, for $b = f(a)$ we have $(f^(-1))'(b) = F^(-1)$. We can make $RR^n$ a Banach space $X$.
+  Let $X$ be a Banach Space such as $RR^n$. 
+  Fix an open set $A subset X$, 
+  a smooth function $f in X^A cap C^1$ 
+  and a point $a in A$ such that 
+  $F = f'(a) in X^X$ is an invertible linear operator. 
+  Then $f$ is locally invertible at $a$, i.e. there are neighbourhoods $V_a$ and $W_(f(a))$ such that $f:V_a to W_(f(a))$ is a bijection.
+Furthermore, for $b = f(a)$ we have $(f^(-1))'(b) = F^(-1)$.
 ]
 #proof()[
-  Fix a point in an open set $a in A subset X$ and let $f:A to X$. Suppose $f in C^1$ and $f'$ is invertible at $a$. Then
-$(f^(-1) circ f)'(a) = iota'(a) = iota:X to X$ yields the desired equation. 
+  Fix a point in an open set $a in A subset X$ and let $f:A to X$. 
 
 We are given that $f in C^1$ on $A subset X$. We would like to show that $f^(-1):W_(f(a)) to V_a$ exists and is in $C^1$. Let 
 $ dee(x) = a+[f'(a)]^(-1) circ (f(x)-f(a)) "N.B. Inverse is linear operator " X to X $ 
 so that $dee(a) = a$ and $dee'(a) = iota:X to X$ and let $g = dee - iota$. 
-Then $g$ is similar enough to $f$ that $g in C^1$. Fix $beta in (0,1)$ and $c$ in the interval $ 
-(0,min(1,beta/norm(f'(a))_"spectral"))$ N.B. the interval makes sense because only the zero matrix has zero norm and it isn't invertible. 
+Then $g$ is similar enough to $f$ that $g in C^1$. 
+Fix $c$ in the interval $ 
+lr((0,lr(lr(lr(||F^(-1)||)||)F||))) subset [0,1)$.
 Since $g'$ is cts, there is some $r > 0$ such that $norm(g'(z)-g'(a))=norm(g'(z)) <= c$ for any $z in B(a,r)$. 
 Fix $x,y in B(a,r)$. Then
 $
@@ -228,43 +232,49 @@ For $x in B(a,(1-c)/(1+c) r)$ We have $norm(dee(x)-a) = norm(dee(x)-dee(a))
 $dee(a) in B(a,(1-c)r)$ and this is in the domain of $cal(D)^(-1)$, so we have $a = cal(D)^(-1)(dee(a)) in dee^(-1){B(a,(1-c)r)}$ which is an open set. So we are done with the first part of the theorem, 
 $f$ is invertible between open neighbourhoods of $a$ and $f(a)$.
 
-Now we need to show that the derivative of $f^(-1)$ exists at the point $b=f(a)$. 
-Fix $eps>0$. We know 
-from the claimed theorem that it will be $A = [f'(a)]^(-1)$, 
-so we want to show that there exists $del > 0$ such that
+Now we need to show that the derivative of $f^(-1)$ exists at the point $b=f(a)$.
+Suppose for a moment that $f'$ is invertible at $a$. 
+Then
+$(f^(-1) circ f)'(a) = iota'(a) = iota:X to X$ tells us we can write $(f^(-1))'(b)$ as $ [f'(a)]^(-1)$. 
+Fix $eps>0$. 
+We want to show that there exists $del > 0$ such that for $k in Q$ with $norm(k)<del$ we have
 $
-eps > norm(f^(-1)(b+k)-f^(-1)(b)-A k) /norm(k) " for " k in Q "with" norm(k)<del. #h(0.5cm) "N.B." b+k in Q "for small enough" k "since" Q "open".
-$
-Let $h = f^(-1)(b+k) -a$. Since $f^(-1)$ is cts and $dee^(-1){B(a,(1-c)r)}$ is open, 
-for small enough $k$ we have 
-$
-a+h = f^(-1)(f(a)+k) in N_(f(a)) subset dee^(-1){B(a,(1-c)r)}.
-$ 
-Then 
-$
-norm(k-h) 
-&= norm(k+b-b-h) \
-&= norm(f(a+h)-f(a)-h) \
-&= norm(T_(f(a)) circ f'(a) circ T_(-a) circ dee(a+h) - T_(f(a)) circ f'(a) circ T_(-a) circ dee(a)-h) \
-&= norm(A^(-1)circ T_(-a) circ dee(a+h) - A^(-1) circ T_(-a) circ dee(a)-h) \
-&<= norm(A^(-1))_"spectal" norm(dee(a+h)-dee(a)-h) "by definition of the spectral norm"\
-&<= norm(A^(-1))_"spectal" c norm(h)  "by the earlier estimate," \
-&< beta norm(h) "since" c "is in a carefully chosen interval,"
-$
-so that $norm(k) >= norm(h)-norm(h-k) > (1-beta) norm(h)$.
+eps > norm(f^(-1)(b+k)-f^(-1)(b)-F^(-1) k) /norm(k). $
 Since $f$ 
-is differentiable at $a$, we can choose $del'>0$ such that for 
+is differentiable at $a$, we can choose $del'>0$ such that for $h in X$ with
 $
-  norm(h) < del' "we have" norm(A^(-1) h - f(a+h)+f(a)) / norm(h) 
-  < 1 / norm(A).
+  norm(h) < del' "we have" norm(F h - f(a+h)+f(a)) /norm(h)
+  < (eps (1-c lr(lr(lr(||F^(-1)||)||)F||)))/(norm(F^(-1))^2).
 $
-Let $del = min(del'(1-beta),eps(1-beta)) > 0$. Then if $del > norm(k)$ we have $del' > norm(h)$ and
+Since $f^(-1)$ is cts at $b$ there exists $del''>0$ such that for all $k in Q$ with $norm(k)<del''$ we have $norm(f^(-1)(b+k)-f^(-1)(b)) < min(del',(1-c)r)$.
+Pick $del=del'' >0$ and fix $k in Q$ such that $norm(k)<del$. Let $h=f^(-1)(b+k)-a$ so that
 $
-norm(f^(-1)(b+k)-f^(-1)(b)-A k) &= norm(h-A k) \
-&<= norm(A) norm(A^(-1) h-k) "by definition of the spectral norm"\
-&= norm(A) norm(A^(-1) h - f(a+h)+f(a)) \
-&< norm(h) \
-&<norm(k) / (1-beta) \
-&< eps.
+norm(h) < del' "and" a+h in B(a,(1-c)r).$ 
+Then we have
+
 $
+norm(k-F h) 
+&= norm(k+b-b-F h) \
+&= norm(f(a+h)-f(a)-F h) \
+&= norm(T_(f(a)) circ F circ T_(-a) circ dee(a+h) - T_(f(a)) circ F circ T_(-a) circ dee(a)-F h) \
+&= norm(F circ T_(-a) circ dee(a+h) - F circ T_(-a) circ dee(a)-F h) \
+&<= norm(F)_"spectal" norm(dee(a+h)-dee(a)-h) "by definition of the spectral norm"\
+&= norm(F) norm(g(a+h)-g(a)) \
+&<= c norm(F) norm(h)  "by the earlier estimate"\
+"and"\
+norm(h) &=norm(h-F^(-1)k+F^(-1)k) \
+&<= norm(F^(-1)) norm(F h-k)+norm(F^(-1))norm(k) "  N.B." F^(-1) "is bounded by bounded inverse theorem"\
+&<= c norm(F) norm(F^(-1)) norm(h)+norm(F^(-1))norm(k),
+$
+so $ norm(h) / norm(k) <= norm(F^(-1))/(1-c norm(F) norm(F^(-1))) "because we chose" c "in such a way the denominator on the RHS is positive". $
+Then as desired,
+$
+norm(f^(-1)(b+k)-f^(-1)(b)-F^(-1) k)/norm(k) &= 
+norm(h-F^(-1) k)/norm(k) \
+&<= (norm(F^(-1)) norm(F h-(f(a+h)-f(a))))/norm(k) \
+&<= (norm(F^(-1))^2)/(1-c lr(lr(lr(||F^(-1)||)||)F||)) norm(F h - f(a+h)+f(a)) /norm(h)\
+&< eps,
+$
+so $f^(-1)$ is differentiable at $b$ with derivative $F^(-1)$. Since $F:X to X$ is a bounded linear operator, 
+so too is $F^(-1)$ by the bounded inverse theorem. So $f^(-1)$ is continuous at $b$.
 ]
