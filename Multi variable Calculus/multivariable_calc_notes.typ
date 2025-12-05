@@ -2,11 +2,6 @@
 #import "@preview/cetz-plot:0.1.2"
 #import "@preview/ctheorems:1.1.3": *
 #import "@preview/scaffolder:0.2.1": get-page-margins
-#let big(img) = context {
-  let size = measure(img)
-  set image(width: size.width, height: size.height)
-  img
-}
 #let textwidth() = context {
   return page.width - get-page-margins().left - get-page-margins().right
 }
@@ -104,6 +99,7 @@
 #let otimes = $otimes$
 #let cap = $inter$
 #let cup = $union$
+#let null = $emptyset$
 #let bitlim = $2147483647$
 #let sseq = $(x_(n_k))_(k >= 1)$
 #let infty = $infinity$
@@ -192,6 +188,9 @@ Then use completeness of $X$
 to conclude the cauchy centers 
 converge outside the union. You need @denseinter too.            ]
 ]
+#theorem("Open Mapping Theorem")[
+Let $X,Y neq null$ be Banach and $T:X to Y$ be bounded linear and onto. Then Baire says that
+$T$ is open map. Kreyzig pg 286/301 for proof.]
 #pagebreak()
 == Derivatives
 #defn("Frechet Derivative on Banach Spaces")[
