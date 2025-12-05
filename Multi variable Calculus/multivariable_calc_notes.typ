@@ -55,6 +55,7 @@
 #let Lm = $Λ$
 #let Chi = $χ$
 #let nm(x) = $norm(#x)$
+#let cl(x) = $overline(#x)$
 #let implies = $⟹$
 #let impliesnot = $cancel(⟹, length:#70%, stroke:#1.5pt)$
 #let notimplies = $cancel(⟹, length:#70%, stroke:#1.5pt)$
@@ -91,6 +92,7 @@
 #let aff = math.op("Aff")
 #let relint = math.op("Relint")
 #let span = math.op("Span")
+#let interior = math.op("Int")
 #let ker = math.op("Ker")
 #let var = math.op($"Var"$)
 #let cov = math.op($"Cov"$)
@@ -144,19 +146,73 @@
 BEGIN DOCUMENT
 */
 #set page(margin: (left: 0cm,right:0cm))
+= Fundamental Banach Space Theorems
+== Topology
+#defn()[
+  A subset $M$ of a space $X$ is called #cred("dense") if $cred(cl(M) = X)$. Also, 
+  $ 
+  cl(M) = & X without interior(X without M) &= X \
+  &<==> cred(interior(X without M) &= emptyset). \  
+  $
+  This implies that open $Q subset X without M$, 
+  i.e. $Q cap M = emptyset$ have $Q = emptyset$. 
+  The contrapositve is $Q neq emptyset implies 
+  Q cap M neq emptyset$. 
+  If there was $Q neq emptyset$ 
+  open such that $Q cap M = emptyset$, 
+  then $q in Q subset interior(X without M) 
+  neq emptyset$. So $cl(M) = X <==> cred(forall "open" Q neq emptyset" we have" Q cap M neq emptyset)$.
 
-= Implicit and Inverse function theorems
+  A subset $M$ is called 
+  #cblue("nowhere dense") if there are #cblue($"no open sets" Q subset X "within which" M cap Q "is dense under the relative topology of" X "on" Q$). 
+  Fix an open set $P subset X$.
+  Then since $P$ is open either $P = emptyset$ or $M cap P$ is not dense in $P$. In the latter case, $exists U neq emptyset$ open in $P$ 
+  such that $U cap (M cap P) = U cap M = emptyset$. 
+  #lemma()[Suppose $U,M subset X$ with $U$ open and $U cap cl(M) neq emptyset$. Then since $M$ is dense in $cl(M)$, 
+  and $U cap cl(M) neq emptyset$ is open in $cl(M)$, $M cap (U cap cl(M)) = U cap M neq emptyset$. The contrapositive is what we want, if $U cap M = emptyset$ then $U cap cl(M) = emptyset$. 
+  The converse of that is trivially true too so $U cap M = emptyset iff U cap cl(M) = emptyset$.]  <denseinter>
+  But then $U cap cl(M) = emptyset$ and  $U neq emptyset$, so $exists p in U subset X without cl(M)$ and $p in P$, so $P subset.not cl(M)$. Since any open set in the closure must be empty, $cblue(interior(cl(M)) = emptyset)$.
+  
+  Now suppose $interior(cl(M)) = emptyset$ and fix open $Q neq emptyset$. Then either $M cap Q = emptyset implies cl(M) cap Q = emptyset neq Q$ or $emptyset neq M cap Q subset cl(M) cap Q ==> interior(cl(M) cap Q) neq cl(M) cap Q ==> cl(M) cap Q neq Q$ since $Q$ is open.   
+]
+#defn("First and Second Category Spaces")[
+A space is first category if it is the countable union of nowhere dense sets and second category if not.
+]
+#theorem("Baire's Category Theorem")[
+  Let $X$ be a nonempty #text(weight:"bold")[complete] metric space. Then $X$ is second category. In particular, suppose that ${A_n:n in NN}$ are closed subsets of $X$. Then if  
+  $
+    X =cup_(n in NN) A_n
+  $
+  we must have $interior(A_k) neq emptyset$ for some $k in NN$.
+#proof()[Make decreasing sequence of balls 
+outside the closure of each set in a countable 
+collection of sets that get small using metric, 
+non emptyness of $X$ and the nowhere dense property. 
+Then use completeness of $X$ 
+to conclude the cauchy centers 
+converge outside the union. You need @denseinter too.            ]
+]
+#pagebreak()
+== Derivatives
 #defn("Frechet Derivative on Banach Spaces")[
-Taking a derivative requires taking a limit point in the domain, so arbitrarily small neighbourhoods of the point need to exist. Every point in an open set satisfies this property. This is why we see $U subset V$ be defined as open when defining $f:U to W$. The derivative of $f$ at a point $x in U$ exists iff there is a bounded linear operator $A:V to W$ such that 
+Taking a derivative requires taking a limit point in the domain, so arbitrarily small neighbourhoods of the point need to exist in the function domain. Every point in an open set satisfies this property. This is why we see $U subset V$ be defined as open when defining $f:U to W$. The derivative of $f$ at a point $x in U$ exists iff there is a bounded linear operator $A:V to W$ such that 
 $
   #scale(auto,x:2cm)[$ lim_(norm(h) to 0) $] #h(1cm) norm(f(x+ h)-f(x) - A h)_W / (norm(h)_V) #h(1cm) #scale(auto,x:2cm)[$=0.$]
 $
 If $A$ exists then we write $f'(x) = A$.   
 ]
+The derivative is the best linear approximation of a function near a point. In particular, for a linear function between finite dimensional vector spaces $T:RR^n to RR^m$, the matrix of $T$ is equal to the derivative of $T$ at any point in $RR^n$, so the derivative is constant and does the same thing $T$ itself does.
 
+#theorem("Banach's fixed-point theorem")[ Let $(X, d)$ be a non-empty complete metric space with a contraction mapping $T: X to X$.
+Then $T$ admits a unique fixed-point $x^*$ in X (ie. $T(x^*) = x^*)$. 
+Furthermore, $x^*$ can be found as follows: start with an
+arbitrary element $x_1 in X$ and define a sequence $seq$ by $x_(n+1) = T(x_n)$ for $n > 1$. 
+Then $lim_(n to infty) x_n = x^*$.
+]
 #image("multiv/bounded_inverse.png")
-#set page(margin: (left:1cm,right:1cm))
 
+#set page(margin: (left:1cm,right:1cm))
+== Implicit and Inverse function theorems
 #lemma("Major and Minor Balls of Perturbation of Open Ball")[
 Fix a banach space $X$, an open ball $B(a,r) subset X$ and a contraction $g:B(a,r) to B(a,r)$ with constant $c$. Let $dee:B(a,r) to X$ 
 be given by $dee(x) = x + g(x)$. Then reverse triangle says 
@@ -192,7 +248,7 @@ We are given that $f in C^1$ on $A subset X$. We would like to show that $f^(-1)
 $ dee(x) = a+[f'(a)]^(-1) circ (f(x)-f(a)) "N.B. Inverse is linear operator " X to X $ 
 so that $dee(a) = a$ and $dee'(a) = iota:X to X$ and let $g = dee - iota$. 
 Then $g$ is similar enough to $f$ that $g in C^1$. 
-Fix $c$ in the interval $ 
+Using the operator norms, fix $c$ in the interval $ 
 lr((0,1 / lr(lr(lr(||F^(-1)||)||)F||))) subset [0,1)$.
 Since $g'$ is cts, there is some $r > 0$ such that $norm(g'(z)-g'(a))=norm(g'(z)) <= c$ for any $z in B(a,r)$. 
 Fix $x,y in B(a,r)$. Then
@@ -237,17 +293,20 @@ Suppose for a moment that $f'$ is invertible at $a$.
 Then
 $(f^(-1) circ f)'(a) = iota'(a) = iota:X to X$ tells us we can write $(f^(-1))'(b)$ as $ [f'(a)]^(-1)$. 
 Fix $eps>0$. 
-We want to show that there exists $del > 0$ such that for $k in Q$ with $norm(k)<del$ we have
+We want to show that there exists $del > 0$ such that 
+for $frak(K) in Q$ with $norm(frak(K))<del$ we have
 $
-eps > norm(f^(-1)(b+k)-f^(-1)(b)-F^(-1) k) /norm(k). $
+eps > norm(f^(-1)(b+frak(K))-f^(-1)(b)-F^(-1) frak(K)) /norm(frak(K)). $
 Since $f$ 
-is differentiable at $a$, we can choose $del'>0$ such that for $h in X$ with
+is differentiable at $a$, we can choose $del'>0$ 
+such that for $cal(h) in X$ with
 $
-  norm(h) < del' "we have" norm(F h - f(a+h)+f(a)) /norm(h)
+  norm(cal(h)) < del' "we have" norm(F cal(h) - f(a+cal(h))+f(a)) /norm(cal(h))
   < (eps (1-c lr(lr(lr(||F^(-1)||)||)F||)))/(norm(F^(-1))^2).
 $
-Since $f^(-1)$ is cts at $b$ there exists $del''>0$ such that for all $k in Q$ with $norm(k)<del''$ we have $norm(f^(-1)(b+k)-f^(-1)(b)) < min(del',(1-c)r)$.
-Pick $del=del'' >0$ and fix $k in Q$ such that $norm(k)<del$. Let $h=f^(-1)(b+k)-a$ so that
+Since $f^(-1)$ is cts at $b$ there exists $del>0$ 
+such that for all $frak(K) in Q$ with $norm(frak(K))<del$ we have $ norm(f^(-1)(b+frak(K))-f^(-1)(b)) < min(del',(1-c)r). $
+Fix $k in Q$ such that $norm(k)<del$. Let $h=f^(-1)(b+k)-a$ so that
 $
 norm(h) < del' "and" a+h in B(a,(1-c)r).$ 
 Then we have
@@ -258,7 +317,7 @@ norm(k-F h)
 &= norm(f(a+h)-f(a)-F h) \
 &= norm(T_(f(a)) circ F circ T_(-a) circ dee(a+h) - T_(f(a)) circ F circ T_(-a) circ dee(a)-F h) \
 &= norm(F circ T_(-a) circ dee(a+h) - F circ T_(-a) circ dee(a)-F h) \
-&<= norm(F)_"spectal" norm(dee(a+h)-dee(a)-h) "by definition of the spectral norm"\
+&<= norm(F)_"operator norm" norm(dee(a+h)-dee(a)-h) "by definition of the operator norm"\
 &= norm(F) norm(g(a+h)-g(a)) \
 &<= c norm(F) norm(h)  "by the earlier estimate"\
 "and"\
