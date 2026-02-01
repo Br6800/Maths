@@ -494,7 +494,8 @@ $$
 Then the cycles are disjoint and $\sigma = \mu_1 \hdots \mu_m$.
 \end{proof}
 \end{lemma}
-This theory is something you can use when coding. Rotation of an $n \times n$ matrix by 90 degrees is a permutation on the elements in the matrix. For a five by fivem there are 7 distinct orbits illustrated by different colours:
+This theory is something you can use when coding. Rotation of an $n \times n$ matrix by 90 degrees is a permutation on the elements in the matrix. For a five by five matrix there are 7 distinct orbits illustrated by different colours:
+\begin{center}
 \begin{tikzpicture}[scale=1.2] % slightly bigger scale
 
 % Orbit colors
@@ -555,11 +556,12 @@ This theory is something you can use when coding. Rotation of an $n \times n$ ma
 \node[text=O6] at (-1,-2) {22};
 
 \end{tikzpicture}
+\end{center}
 if you want to apply the rotation $\sigma_{90}$ in place, you can start by writing 
 $$
 \sigma_{90} = (1,5,25,21)(2,10,24,16)(3,15,23,11)(4,20,22,6).
 $$ 
-Each cycle is then a product of transpositions, e.g. $(1,5,25,21) = (21,25)(25,5)(5,1)$. A transposition $(a,b)$ can be done in place with xor via $a \to a \oplus b$ then $b \to a \oplus b = ( a \oplus b) \oplus b = a \oplus (b \oplus b) = a \oplus 0 = a$ then $a -> b \oplus a = a \oplus (a \oplus b) = b$.
+Each cycle is then a product of transpositions, e.g. $(1,5,25,21) = (21,25)(25,5)(5,1)$. A transposition $(a,b)$ can be done in place with xor via $a \to a \oplus b$ then $b \to a \oplus b = ( a \oplus b) \oplus b = a \oplus (b \oplus b) = a \oplus 0 = a$ then $a \to b \oplus a = a \oplus (a \oplus b) = b$.
 \begin{lemma}
 Let $N$ be a nontrivial normal subgroup of $A_n$, where $n \geq 5$.
 Then $N$ contains a 3-cycle.
