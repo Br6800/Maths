@@ -5,6 +5,10 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{xcolor}
+%not tested on local machine
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 \usepackage{hyperref}
 \usepackage{amsfonts}
@@ -490,6 +494,72 @@ $$
 Then the cycles are disjoint and $\sigma = \mu_1 \hdots \mu_m$.
 \end{proof}
 \end{lemma}
+This theory is something you can use when coding. Rotation of an $n \times n$ matrix by 90 degrees is a permutation on the elements in the matrix. For a five by fivem there are 7 distinct orbits illustrated by different colours:
+\begin{tikzpicture}[scale=1.2] % slightly bigger scale
+
+% Orbit colors
+\definecolor{O0}{RGB}{0,0,0}        % center
+\definecolor{O1}{RGB}{230,25,75}
+\definecolor{O2}{RGB}{60,180,75}
+\definecolor{O3}{RGB}{0,130,200}
+\definecolor{O4}{RGB}{245,130,48}
+\definecolor{O5}{RGB}{145,30,180}
+\definecolor{O6}{RGB}{150,75,0}
+
+
+
+% Outer square
+\draw[thick] (-2.5,-2.5) rectangle (2.5,2.5);
+
+% Inner squares aligned to grid
+\draw[black, thick] (-1.5,-1.5) rectangle (1.5,1.5); % 3x3
+\draw[black, thick] (-0.5,-0.5) rectangle (0.5,0.5); % 1x1
+
+% Numbers
+\node[text=O0] at (0,0) {13};
+
+% Inner cross orbit {8,14,18,12}
+\node[text=O1] at (0,1) {8};
+\node[text=O1] at (1,0) {14};
+\node[text=O1] at (0,-1) {18};
+\node[text=O1] at (-1,0) {12};
+
+% Inner corner orbit {7,9,19,17}
+\node[text=O2] at (1,1) {9};
+\node[text=O2] at (1,-1) {19};
+\node[text=O2] at (-1,-1) {17};
+\node[text=O2] at (-1,1) {7};
+
+% Orbit {15,23,3,11}
+\node[text=O3] at (2,0) {15};
+\node[text=O3] at (0,-2) {23};
+\node[text=O3] at (0,2) {3};
+\node[text=O3] at (-2,0) {11};
+
+% Orbit {21,1,5,25}
+\node[text=O4] at (-2,-2) {21};
+\node[text=O4] at (-2,2) {1};
+\node[text=O4] at (2,2) {5};
+\node[text=O4] at (2,-2) {25};
+
+% Orbit {2,10,24,16}
+\node[text=O5] at (-1,2) {2};
+\node[text=O5] at (2,1) {10};
+\node[text=O5] at (1,-2) {24};
+\node[text=O5] at (-2,-1) {16};
+
+% Orbit {6,4,20,22}
+\node[text=O6] at (-2,1) {6};
+\node[text=O6] at (1,2) {4};
+\node[text=O6] at (2,-1) {20};
+\node[text=O6] at (-1,-2) {22};
+
+\end{tikzpicture}
+if you want to apply the rotation $\sigma_{90}$ in place, you can start by writing 
+$$
+\sigma_{90} = (1,5,25,21)(2,10,24,16)(3,15,23,11)(4,20,22,6).
+$$ 
+Each cycle is then a product of transpositions, e.g. $(1,5,25,21) = (21,25)(25,5)(5,1)$. A transposition $(a,b)$ can be done in place with xor via $a \to a \oplus b$ then $b \to a \oplus b = ( a \oplus b) \oplus b = a \oplus (b \oplus b) = a \oplus 0 = a$ then $a -> b \oplus a = a \oplus (a \oplus b) = b$.
 \begin{lemma}
 Let $N$ be a nontrivial normal subgroup of $A_n$, where $n \geq 5$.
 Then $N$ contains a 3-cycle.
