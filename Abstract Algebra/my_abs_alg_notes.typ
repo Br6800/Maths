@@ -283,7 +283,7 @@ then $
   Since $mat(2,2;3,3)$ is not invertible, either $ M mat(2,2;3,3) neq "Id"_2$ or $ mat(2,2;3,3) M neq "Id"_2$  
   so $phi$ is not injective. Otherwise, $Q_0 neq 0$ and we repeat the argument with $mat(1,1;1,1)$; whatever the case, $phi$ is not injective.
 ]
-]
+] hope
 /*
 \subsection*{Non Isomorphism Example}
 The function $\phi: (M_2(\R),\times) \to (\R,\times), \quad \phi(A) = \det(A)$ is not an isomorphism (in fact, no such isomorphism exists).
