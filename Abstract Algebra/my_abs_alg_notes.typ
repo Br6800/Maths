@@ -162,7 +162,7 @@ $
 $
 = Lower level algebraic structures before groups
 #align(center)[
-#image("fig/IMG_7240.jpeg",width:15cm)
+#image("fig/IMG_7240.jpeg")
 #image("fig/IMG_7241.jpeg")]
 A binary operation is a map $*:S times S to S$ and a subset $H$ of $S$ 
 is closed under $*$ if the obvious thing happens.
@@ -236,7 +236,7 @@ then the preimage of the identity of $S$ is the identity of $R$.
   $
 ]
 ]
-== Non Isomorphism Example
+== Non Isomorphism Examples
 The function $phi: (M_2(R),times_M) to (R,times), quad phi(A) = det(A)$ 
 is not an isomorphism (in fact, no such isomorphism exists).
 #proof()[
@@ -264,7 +264,10 @@ then $
   ) "and their determinants are both 1".
   $
 ]
-#lemma()[There is no isomorphism from $(M_2(RR),times_M)$ to $(RR,times)$.
+Another example that fails injectivity is the map under addition from functions with derivatives to their derivatives.
+Being a binary operation (or even a function at all) can fail with integrals even if everything else works.
+== Disproving stuff using properties that're preserved under isomorphisms
+#lemma()[There is no isomorphism from $(M_2(RR),times)$ to $(RR,times)$.
 #proof()[
   Suppose that $phi:M_2(RR) to RR$ is an onto homomorphism. 
   Let $phi circ mat(1,1;1,1) = Q_0$. If $Q_0 = 0$, 
@@ -280,40 +283,13 @@ then $
   so that $Q Q^(-1) = 1$. Since $phi$ is onto, there is some matrix $M$ such that $
   phi(M) = Q^(-1)$. Then $phi(mat(2,2;3,3) M) = phi(M mat(2,2;3,3)) = phi(M) phi circ mat(2,2;3,3) = Q^(-1) Q = 1 = phi("Id"_2)$ by @theorem4.4.
   $$
-  Since $mat(2,2;3,3)$ is not invertible, either $ M mat(2,2;3,3) neq "Id"_2$ or $ mat(2,2;3,3) M neq "Id"_2$  
+  Since $mat(2,2;3,3)$ is not invertible, either $ M mat(2,2;3,3) neq "Id"_2$ or $ mat(2,2;3,3) M neq "Id"_2$ #footnote("Square matrices can't have a left or right inverse in isolation. They are linear maps on finite vector spaces, so one to one iff onto by rank nullity.") 
   so $phi$ is not injective. Otherwise, $Q_0 neq 0$ and we repeat the argument with $mat(1,1;1,1)$; whatever the case, $phi$ is not injective.
-]
-] hope
+]]
+We know the identity is preserved. So $phi(f)(x) = x f(x)$ is not an isomorphism across $F = {f:RR to RR | f "is smooth"}$ under multiplication, $phi(iota)(2) = 4 neq iota(2)$, so $phi(iota) neq iota$, where $iota:RR to RR$ is given by $iota(x) = x$.
+#align(center)[
+#image("fig/IMG_7271.jpeg",width:580pt)] 
 /*
-\subsection*{Non Isomorphism Example}
-The function $\phi: (M_2(\R),\times) \to (\R,\times), \quad \phi(A) = \det(A)$ is not an isomorphism (in fact, no such isomorphism exists).
-\begin{proof}
-It is a homomorphism, $\det(AB) = \det(A)\det(B)$. But it isn't injective because matrix multiplication isn't commutative.
-Take $$A = \begin{bmatrix}
-1 & 1 \\
-0 & 1
-\end{bmatrix},\quad B =
-\begin{bmatrix}
-1 & 0 \\
-1 & 1
-\end{bmatrix}
-$$
-then $$
-AB = \begin{bmatrix}
-2 & 1 \\
-1 & 1
-\end{bmatrix},\quad BA =
-\begin{bmatrix}
-1 & 1 \\
-1 & 2
-\end{bmatrix}
-$$
-so that $$
-\phi(AB) = \phi(BA) = 1 \text{ but } AB \neq BA.
-$$
-\end{proof}
-\noindent Another example that fails injectivity is the map under addition from functions with derivatives to their derivatives.
-Being a binary operation (or even a function at all) can fail with integrals even if everything else works.
 \subsection*{Disproof using stuff that's preserved under isomorphisms}
 We know the identity is preserved. So $\phi(f)(x) = xf(x)$ is not an isomorphism across $F = \{f: \R \to \R| f \text{ is smooth}\}$ under multiplication, $\phi(\bf{1})(2) = 2 \neq 1$, so $\phi(\bf{1}) \neq \bf{1}$, where $\bf{1}: \R \to \R$ is given by $\bf{1}$$ (x) = 1$.
 \begin{center}
