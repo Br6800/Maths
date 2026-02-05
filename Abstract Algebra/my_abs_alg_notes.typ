@@ -68,6 +68,7 @@
 #let oplus = $⊕$
 #let otimes = $⊗$
 #let iso = $≃$
+#let notiso = $≄$
 
 #let ev = $eps^((i))$
 #let xv = $x^((i))$
@@ -288,44 +289,39 @@ Being a binary operation (or even a function at all) can fail with integrals eve
 ]]
 We know the identity is preserved. So $phi(f)(x) = x f(x)$ is not an isomorphism across $F = {f:RR to RR | f "is smooth"}$ under multiplication, $phi(iota)(2) = 4 neq iota(2)$, so $phi(iota) neq iota$, where $iota:RR to RR$ is given by $iota(x) = x$.
 #align(center)[
-#image("fig/IMG_7271.jpeg",width:580pt)] 
-/*
-\subsection*{Disproof using stuff that's preserved under isomorphisms}
-We know the identity is preserved. So $\phi(f)(x) = xf(x)$ is not an isomorphism across $F = \{f: \R \to \R| f \text{ is smooth}\}$ under multiplication, $\phi(\bf{1})(2) = 2 \neq 1$, so $\phi(\bf{1}) \neq \bf{1}$, where $\bf{1}: \R \to \R$ is given by $\bf{1}$$ (x) = 1$.
-\begin{center}
-\includegraphics[scale=0.1, angle=-90]{fig/IMG_7271.jpeg}
-\end{center}
-\begin{center}
-\includegraphics[scale=0.1, angle=-90]{fig/IMG_7272.jpeg}
-\end{center}
-\section*{Groups}
-Here are some:
-$$
-(U, *) \text{ with } U = \{ z \in \C: |z| = 1 \}, \quad \text{$(U_n,*)$ with } U_n = \{ z \in \C: z^n = 1\}
-$$
-The invertible $n$ by $n$ matrices and the invertible linear maps on $\R^n$:
-$$
-\GLM \iso \GL
-$$
-To get an isomorphism, map an invertible linear function $T: \R^n \to \R^n$ to a matrix using its action on the standard basis.
+#image("fig/IMG_7271.jpeg",width:580pt)
+#image("fig/IMG_7272.jpeg",width:480pt)] 
+= Groups
+Here are some examples of groups:
+$
+  (U,*) "with" U = {z in CC: |z| = 1}, "and" (U_n,*) "with" U_n = {z in CC: z^n = 1}
+$
+The invertible $n$ by $n$ matrices and the invertible linear maps on $RR^n$:
+$
+  "GL"_n (RR) iso "GL"(RR^n)
+$
+To get an isomorphism, map an invertible linear function $T: RR^n to RR^n$ to a matrix using its action on the standard basis.
 Left inverses and identities plus associative is enough to define a group.
 Identity is a right identity:
-\begin{align*}
-x + e_L &= e_L + (x + e_L)  \\ &= (x_{LL} + x_L) + (x + (x_L+x)) \\ &= x_{LL} + (x_L+x) + (x_L+x) \\ &=
-x_{LL} + e_L + (x_L+x) \\ &= (x_{LL}+x_L)+x \\ &= e_L + x \\ &= x.
-\end{align*}
-Left inverses are right inverses also,
-$$
-x + x_L = e_L + x+ x_L = (x_{LL}+x_L) + x + x_L = x_{LL}+e_L+x_L = x_{LL} + x_L = e_L.
-$$
-\begin{center}
-\includegraphics[scale=0.4, angle=-90]{fig/IMG_7275.jpeg}
-\end{center}
-It's easy to do the same argument with $\phi(e^\pi) = a > 0$.
-Bit weirder for $(U,*) \not \simeq (\R^*,*), a^2 = a * a = \phi(e^\pi) * \phi(e^\pi) = \phi(e^{2\pi}) = 1$ but $0 \not \in \R^*$ and $a \neq 1$ since $\phi$ injective and $\phi(e^0) = 1$.
-\begin{center}
-\includegraphics[scale=0.3, angle=-0]{fig/IMG_7284.jpeg}
-\end{center}
+$
+x + e_L &= e_L + (x + e_L)  \
+&= (x_"LL" + x_L) + (x + (x_L+x)) \
+&= x_"LL" + (x_L+x) + (x_L+x) \
+&=  x_"LL" + e_L + (x_L+x) \
+&= (x_"LL"+x_L)+x \
+&= e_L + x \
+&= x.  
+$
+#align(center)[
+#image("fig/IMG_7275.jpeg",height:60%)]
+It's easy to do the same argument with $phi(e^(i pi)) = a > 0$ if you'd like to prove it directly with $U$.
+For $(U,*) notiso (RR^*,*)$, supposing $phi$ is a monomorphism, 
+$a = phi(e^(i pi))$ is not one by @theorem4.4 then we would have $a^2 = a * a = phi(e^(i pi)) * 
+phi(e^(i pi)) = phi(e^(2 i pi)) = phi(1) = 1$ but no element of $RR^*$ has order two, contradiction.
+#align(center)[
+  #image("fig/IMG_7284.jpeg",width:480pt)
+]
+/*
 \section*{Subgroups}
 Subgroups are closed, contain identity and inverses. An element $a$ generates $G$ if
 the cyclic subgroup $\la a \ra = \{ a^n : n \in \Z \} = G$. We say that $G$ is cyclic if there is some element that generates it.
