@@ -604,12 +604,12 @@ Suppose $yv in {1,dots.h,k}$ and $P(yv = i|xv";"theta) =
  and $eta_i = theta_i^top xv$.
 The dimensionality of the distribution is $k-1$ 
 since $phi_k = 1- sum_(i=1)^(k-1) phi_i$.
-For $T(y) = e_y in RR^(k-1)$ we have 
+For $T(y) = cases(e_y"," y < k, bold(0)", otherwise") in RR^(k-1)$ we have 
 $ P(yv=k) = 
 phi_k^(1-sum_(i=1)^(k-1) (y=i))prod_(i=1)^(k-1) phi_i^((yv = i)) 
 = exp(inner(log vec(phi_1 / (1-sum phi_i),dots.v,phi_(k-1) / (1-sum phi_i)),T(yv)) +log(1-sum_(i=1)^(k-1) phi_i)) $
 so $ eta_j = log(phi_j / (1-sum_(i=1)^(k-1) phi_i)),#h(0.2cm) T(yv) =
-e_(yv)$ and $A(eta) = log(1+sum_(j=1)^(k-1) e^(eta_j)). $
+cases(e_(yv)", "yv<k,bold(0)", otherwise")$ and $A(eta) = log(1+sum_(j=1)^(k-1) e^(eta_j)). $
 The log-likelihood function is
 $ ell(theta) = sum_(i=1)^m [log(1+sum_(j=1)^(k-1) e^(eta_j^((i)))) + sum_(j=1)^k (yv = j) 
 eta_j^((i))]  $         
