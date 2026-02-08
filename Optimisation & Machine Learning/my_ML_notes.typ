@@ -507,6 +507,8 @@ Then by @1d_equiv, $phi$ is convex and so $f$ is too by @1d_fun.
 Let $J:RR^n to RR$ be continuously differentiable and convex. If $nb J(theta) = 0$ then $theta = argmin(J)$ since $ J(vphi) >= J(theta) + inner(nb J(theta), vphi - theta) = J(theta)$.
 ]
 = Generalised Linear Models
+== Introduction
+#defn()[
 A GLM consists of
 - a distribution from the exponential family,
 - a linear predictor
@@ -515,11 +517,11 @@ $ eta(theta)
 "and" theta = (theta_1,dots.h,theta_k)^top in RR^(n k) "with" theta_i in RR^n. $
 - a link function $g$ such that $E(T(y)|x)= nb A(eta)$ provided $A neq 0$.
 - It is true that $"Var"(T(y);eta)= H(A)(eta)$ provided $A neq 0.$
-The canonical link function is $g = nb A$ where $A$ is the log-partition function.
+The canonical link function is $g = nb A$ where $A$ is the log-partition function.]
 The density of an exponential family distribution is
-$ P(y;eta) = b(y) e^(inner(eta, T(y)) - A(eta)) $
-which has nothing to do with the price of fish.
-What we care about is 
+$ P(y;eta) = b(y) e^(inner(eta, T(y)) - A(eta)). $
+More often we are interested in the
+log-likelihood function 
 $ ell(theta) = log prod P(yv|xv;theta) = sum_(i=1)^m b(yv) + inner(vec(theta_1^top xv,dots.v,theta_k^top xv), T(yv)) - A circ vec(theta_1^top xv,dots.v,theta_k^top xv). $
 The Bernoulli distribution has 
 $ eta = log(phi/(1 - phi))#h(1cm) T(y) = y, #h(1cm) b(y) = 1 #h(1cm) A(eta) = log(1+e^(eta)). $
@@ -533,6 +535,23 @@ has $ eta = log(lm),#h(1cm)T(y) = y, #h(1cm) b(y) = 1 / (y!),
 The distribution $N(mu,1)$ has 
 $ eta = mu, #h(1cm)T(y) = y, #h(1cm) b(y) 
 = 1 / sqrt(2 pi) e^(-y^2 / (2)),#h(1cm) A(eta) = eta^2 / 2. $
+=== 2D Example: Categorical Distribution
+Suppose $yv in {1,dots.h,k}$ and $P(yv = i|xv";"theta) =
+ phi_i$ where $sum phi_i = 1$ 
+ and $eta_i = theta_i^top xv$.
+The dimensionality of the distribution is $k-1$ 
+since $phi_k = 1- sum_(i=1)^(k-1) phi_i$.
+For $T(y) = cases(e_y"," y < k, bold(0)", otherwise") in RR^(k-1)$ we have 
+$ P(yv=k) = 
+phi_k^(1-sum_(i=1)^(k-1) (y=i))prod_(i=1)^(k-1) phi_i^((yv = i)) 
+= exp(inner(log vec(phi_1 / (1-sum phi_i),dots.v,phi_(k-1) / (1-sum phi_i)),T(yv)) +log(1-sum_(i=1)^(k-1) phi_i)) $
+so $ eta_j = log(phi_j / (1-sum_(i=1)^(k-1) phi_i)),#h(0.2cm) T(yv) =
+cases(e_(yv)", "yv<k,bold(0)", otherwise")$ and $A(eta) = log(1+sum_(j=1)^(k-1) e^(eta_j)). $
+The log-likelihood function is
+$ ell(theta) = sum_(i=1)^m [log(1+sum_(j=1)^(k-1) e^(eta_j^((i)))) + sum_(j=1)^k (yv = j) 
+eta_j^((i))]  $   
+== Properties of Canonical Exponential Family
+=== Derivatives
 The log-likelihood function is confusingly written as
 $ ell(theta) = sum_(i=1)^m log(b(yv)) + (eta^((i)))^top T(yv) 
 - A(eta^((i))). $
@@ -598,28 +617,13 @@ $
 -sum_(i=1)^m "Var"(T(yv);eta^((i))) xv xv^top <= 0 "when" k = 1 "since " -sum_(i=1)^m "Var"(T(yv);eta^((i))) w^top xv (w^top xv)^top <= 0. \ 
 $
 So 1D GLM's are concave but higher dimensional GLM's need not be.
-== 2D Example: Categorical Distribution
-Suppose $yv in {1,dots.h,k}$ and $P(yv = i|xv";"theta) =
- phi_i$ where $sum phi_i = 1$ 
- and $eta_i = theta_i^top xv$.
-The dimensionality of the distribution is $k-1$ 
-since $phi_k = 1- sum_(i=1)^(k-1) phi_i$.
-For $T(y) = cases(e_y"," y < k, bold(0)", otherwise") in RR^(k-1)$ we have 
-$ P(yv=k) = 
-phi_k^(1-sum_(i=1)^(k-1) (y=i))prod_(i=1)^(k-1) phi_i^((yv = i)) 
-= exp(inner(log vec(phi_1 / (1-sum phi_i),dots.v,phi_(k-1) / (1-sum phi_i)),T(yv)) +log(1-sum_(i=1)^(k-1) phi_i)) $
-so $ eta_j = log(phi_j / (1-sum_(i=1)^(k-1) phi_i)),#h(0.2cm) T(yv) =
-cases(e_(yv)", "yv<k,bold(0)", otherwise")$ and $A(eta) = log(1+sum_(j=1)^(k-1) e^(eta_j)). $
-The log-likelihood function is
-$ ell(theta) = sum_(i=1)^m [log(1+sum_(j=1)^(k-1) e^(eta_j^((i)))) + sum_(j=1)^k (yv = j) 
-eta_j^((i))]  $         
-== Properties of Canonical Exponential Family
+=== Convexity
 The canonical $k$-dim exponential family has probability density $
                                                           p(x;theta) = h(x)e^(sum_(i=1)^k [theta_i T_i (x)] - A(theta))
                                                          $ 
 *We assume in this section that the distribution is canonicial*. The joint distribution of a bunch of iid exp. dist. random variables is 
 exp. dist. with sufficient statistic $sum_i T_i (X_i)$. The Hessian of the log partition function is equal to the covariance
-matrix of $T(X)$, i.e. $H(A)_(i j) = cov(T(X)_i,T(X)_j)$ which is positive definite. The Hessian of the log likelihood of $m$ iid samples is then $-m H(A)$ which is concave. So a GLM is concave in the natural parameters.
+matrix of $T(X)$, i.e. $H(A)_(i j) = cov(T(X)_i,T(X)_j)$ which is positive definite. The Hessian of the log likelihood of $m$ iid samples is then $-m H(A)$ which is concave. So a GLM is concave in the natural parameters.      
 = Averages of independent random variables concentrate around their expectation
 Some course objectives for students in machine learning include: (1) Predict which kinds
 of existing machine learning algorithms will be most suitable for which sorts of tasks, based
