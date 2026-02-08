@@ -49,7 +49,7 @@ class LogisticRegression(LinearModel):
         k = 2
         T = np.zeros((m,(k-1)))
         for i,obj in enumerate(T):
-            if y[i] >= 1:t
+            if y[i] >= 1:
                 obj[int(y[i])-1] = 1
         # Newton's method
         while True:
